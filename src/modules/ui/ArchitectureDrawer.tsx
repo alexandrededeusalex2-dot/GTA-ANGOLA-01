@@ -46,6 +46,15 @@ function statusLabel(
   if (id === 'character' && status === 'implemented') {
     return { text: 'Personagem Jogável (Fase 3)', colorClass: 'text-emerald-300' };
   }
+  if (id === 'vehicle' && status === 'implemented') {
+    return { text: 'Condução Arcade (Fase 6)', colorClass: 'text-emerald-300' };
+  }
+  if (id === 'npc' && status === 'implemented') {
+    return { text: '3 NPCs Leves (Fase 7)', colorClass: 'text-emerald-300' };
+  }
+  if (id === 'economy' && status === 'implemented') {
+    return { text: 'Missão +100 Kz (Fase 7)', colorClass: 'text-emerald-300' };
+  }
   switch (status) {
     case 'implemented':
       return { text: 'Funcional (Fase 1)', colorClass: 'text-emerald-300' };

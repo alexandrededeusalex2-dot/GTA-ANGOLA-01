@@ -1,0 +1,35 @@
+{
+  "id": "candongueiro-uv1-01",
+  "name": "Candongueiro Toyota Hiace (Luanda Azul-Branco)",
+  "phase": "Fase 5 — Candongueiro Real Low-Poly",
+  "url": "/assets/vehicles/candongueiro_low.glb",
+  "license": "CC0 1.0 Universal (Public Domain) / MIT",
+  "origin": "Kenney Car Kit (van.glb — https://kenney.nl/assets/car-kit / Kenney-CCO) adaptado para Toyota Hiace Candongueiro de Luanda",
+  "tris": 2082,
+  "meshes": {
+    "body": {
+      "count": 1,
+      "tris": 754
+    },
+    "wheels": {
+      "count": 4,
+      "trisPerWheel": 332,
+      "names": [
+        "wheel-front-left",
+        "wheel-front-right",
+        "wheel-back-left",
+        "wheel-back-right"
+      ]
+    }
+  },
+  "material": {
+    "type": "MeshStandardMaterial (PBR)",
+    "texture": "512x512 WebP (EXT_texture_webp) com pintura azul-branca do candongueiro de Luanda, janelas laterais, faróis e farolins"
+  },
+  "dimensionsMeters": {
+    "width": 1.73,
+    "height": 1.92,
+    "length": 4.07,
+    "wheelRadius": 0.366
+  }
+}

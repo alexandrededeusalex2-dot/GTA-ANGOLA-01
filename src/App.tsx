@@ -42,6 +42,14 @@ const INITIAL_TELEMETRY: HudTelemetryState = {
   characterLocomotion: 'idle',
   characterSpeedMps: 0,
   characterRigStatus: 'loading',
+  vehiclePrompt: null,
+  vehicleFeedback: null,
+  isDrivingVehicle: false,
+  vehicleSpeedMps: 0,
+  missionStatus: 'idle',
+  missionDistanceMeters: 344,
+  missionBanner: null,
+  kwanzaBalance: 0,
 };
 
 export default function App() {
@@ -80,6 +88,13 @@ export default function App() {
     dataset: null,
     props: null,
   };
+  const miniMapData = engineRef.current?.getMiniMapData() ?? {
+    roads: [],
+    mercadoPos: { x: 338.82, z: -11.78 },
+    centroPos: { x: -4, z: 12 },
+  };
+  const fallbackPoseRef = useRef({ x: -4, z: 12, yaw: -2.42 });
+  const miniMapPoseRef = engineRef.current?.miniMapPoseRef ?? fallbackPoseRef;
 
   return (
     <main className="relative h-full w-full overflow-hidden bg-[#0e1116]">
@@ -96,6 +111,10 @@ export default function App() {
       {telemetry.gameState === 'playing' && (
         <HudOverlay
           telemetry={telemetry}
+          miniMapRoads={miniMapData.roads}
+          miniMapMercadoPos={miniMapData.mercadoPos}
+          miniMapCentroPos={miniMapData.centroPos}
+          miniMapPoseRef={miniMapPoseRef}
           onToggleMute={() => engineRef.current?.toggleMute()}
           onTogglePause={() => engineRef.current?.togglePause()}
           onOpenArchitecture={() => setInspectorOpen(true)}
@@ -109,6 +128,8 @@ export default function App() {
           onStickMove={(x, y) => engineRef.current?.inputManager.setTouchStick(x, y)}
           onSprintChange={(active) => engineRef.current?.inputManager.setTouchSprint(active)}
           onResetCamera={() => engineRef.current?.resetCamera()}
+          onVehicleInteract={() => engineRef.current?.interactNearbyVehicle()}
+          onCancelMission={() => engineRef.current?.cancelMission()}
         />
       )}
 

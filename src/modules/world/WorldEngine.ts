@@ -26,10 +26,16 @@ import {
   loadPrendaCartography,
   resolveBuildingCollision2D,
   type LocalPoint2D,
+  type PrendaBuildingRecord,
   type PrendaCartographyDataset,
+  type PrendaRoadSegment,
 } from './PrendaCartography';
 import { buildPrendaTerrainAndRoads } from './PrendaTerrainAndRoadsBuilder';
-import { buildPrendaUrbanProps, type PrendaUrbanPropsResult } from './PrendaUrbanPropsBuilder';
+import {
+  buildPrendaUrbanProps,
+  type PrendaUrbanPropsResult,
+  type UrbanObstacleCircle,
+} from './PrendaUrbanPropsBuilder';
 import { SectorManager } from './SectorManager';
 import {
   groundHeightAt,
@@ -250,6 +256,24 @@ export class WorldEngine implements EngineModule {
   resolveExplorerCollision(x: number, z: number, radius = 0.9): LocalPoint2D {
     if (!this.dataset) return { x, z };
     return resolveBuildingCollision2D(x, z, radius, this.dataset.buildings);
+  }
+
+  getVehicleCollisionContext(): {
+    readonly buildings: readonly PrendaBuildingRecord[];
+    readonly obstacleCircles: readonly UrbanObstacleCircle[];
+    readonly drivableRoads: readonly PrendaRoadSegment[];
+  } {
+    const buildings = this.dataset?.buildings ?? [];
+    const obstacleCircles = this.propsBuild?.obstacleCircles ?? [];
+    const drivableRoads = this.dataset
+      ? this.dataset.roads.filter((r) => r.system7v !== 'V7')
+      : [];
+    return { buildings, obstacleCircles, drivableRoads };
+  }
+
+  getRoadsForMiniMap(): readonly PrendaRoadSegment[] {
+    if (!this.dataset) return [];
+    return this.dataset.roads.filter((r) => r.system7v !== 'V7');
   }
 
   sampleGroundHeight(x: number, z: number): number {

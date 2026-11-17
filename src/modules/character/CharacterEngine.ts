@@ -83,6 +83,7 @@ export class CharacterEngine implements EngineModule {
   private targetScene: THREE.Scene | null = null;
   private pendingActionSlot: CharacterActionSlot | null = null;
   private disposed = false;
+  private visible = true;
   private readyPromise: Promise<void> = Promise.resolve();
 
   onFootstep?: (isRunning: boolean) => void;
@@ -127,6 +128,7 @@ export class CharacterEngine implements EngineModule {
         if (this.targetScene && loaded.rootGroup.parent !== this.targetScene) {
           this.targetScene.add(loaded.rootGroup);
         }
+        loaded.rootGroup.visible = this.visible;
         this.syncDomAttributes();
         this.onRigStatusChanged?.('ready');
       })
@@ -148,8 +150,20 @@ export class CharacterEngine implements EngineModule {
     this.targetScene = scene;
     if (this.rig && this.rig.rootGroup.parent !== scene) {
       scene.add(this.rig.rootGroup);
+      this.rig.rootGroup.visible = this.visible;
       this.applyTransformToRig();
     }
+  }
+
+  setVisible(visible: boolean): void {
+    this.visible = visible;
+    if (this.rig) {
+      this.rig.rootGroup.visible = visible;
+    }
+  }
+
+  isVisible(): boolean {
+    return this.visible;
   }
 
   stepControl(

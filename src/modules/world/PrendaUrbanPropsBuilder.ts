@@ -13,10 +13,17 @@ import type {
 } from './PrendaCartography';
 import { groundHeightAt } from './luandaCoordinates';
 
+export interface UrbanObstacleCircle {
+  readonly x: number;
+  readonly z: number;
+  readonly radius: number;
+}
+
 export interface PrendaUrbanPropsResult {
   readonly group: THREE.Group;
   readonly contemporaryPropsGroup: THREE.Group;
   readonly fineDetailGroup: THREE.Group;
+  readonly obstacleCircles: readonly UrbanObstacleCircle[];
   readonly propsSummary: {
     readonly kiosksCount: number;
     readonly streetlightsCount: number;
@@ -534,10 +541,17 @@ export function buildPrendaUrbanProps(
     group.add(palmTrunkInst, palmCrownInst);
   }
 
+  const obstacleCircles: UrbanObstacleCircle[] = [
+    ...kioskCandidates.map((k) => ({ x: k.x, z: k.z, radius: 1.8 })),
+    ...acaciaSpots.map((t) => ({ x: t.x, z: t.z, radius: 0.65 })),
+    ...palmSpots.map((p) => ({ x: p.x, z: p.z, radius: 0.55 })),
+  ];
+
   return {
     group,
     contemporaryPropsGroup,
     fineDetailGroup,
+    obstacleCircles,
     propsSummary: {
       kiosksCount: kioskCandidates.length,
       streetlightsCount: cappedLights.length,

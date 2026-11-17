@@ -7,6 +7,11 @@ import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { ANDROID_QUALITY_PROFILES } from '../core/PerformanceMonitor';
 import type { ExplorerCameraMode, QualityTier, Vector3Like } from '../core/types';
+import {
+  VEHICLE_CAMERA_LERP,
+  computeDesiredVehicleCameraPose,
+  lerpVehicleCameraPose,
+} from '../modules/vehicle/VehicleCamera';
 import { groundHeightAt } from '../modules/world/luandaCoordinates';
 
 const _forward = new THREE.Vector3();
@@ -20,6 +25,7 @@ export type PrendaCameraPresetId =
   | 'lotes-1-6'
   | 'sul-d1-d2'
   | 'v4-comercial'
+  | 'paragem-mercado'
   | 'vista-aerea';
 
 function detectSoftwareWebGL(): boolean {
@@ -102,6 +108,13 @@ export class ThreeViewportController {
 
   private qualityTier: QualityTier = 'medium';
   private tourAngle = 0.55;
+
+  private vehicleCameraActive = false;
+  private readonly vehicleDesiredPos = { x: 0, y: 0, z: 0 };
+  private vehicleDesiredYaw = 0;
+  private readonly vehicleCamPos = { x: 0, y: 0, z: 0 };
+  private readonly vehicleCamTarget = { x: 0, y: 0, z: 0 };
+  private lastRenderInfo = { drawCalls: 0, triangles: 0, geometries: 0, textures: 0 };
 
   constructor(
     private readonly container: HTMLElement,
@@ -217,6 +230,44 @@ export class ThreeViewportController {
     this.desiredTarget.set(x, y, z);
   }
 
+  setVehicleCameraActive(
+    active: boolean,
+    vehiclePos?: Vector3Like,
+    vehicleYaw?: number,
+    playerAnchor?: Vector3Like,
+  ): void {
+    this.vehicleCameraActive = active;
+    if (active && vehiclePos && vehicleYaw !== undefined) {
+      this.vehicleDesiredPos.x = vehiclePos.x;
+      this.vehicleDesiredPos.y = vehiclePos.y;
+      this.vehicleDesiredPos.z = vehiclePos.z;
+      this.vehicleDesiredYaw = vehicleYaw;
+      if (this.camera) {
+        this.vehicleCamPos.x = this.camera.position.x;
+        this.vehicleCamPos.y = this.camera.position.y;
+        this.vehicleCamPos.z = this.camera.position.z;
+      } else {
+        const initial = computeDesiredVehicleCameraPose(vehiclePos, vehicleYaw, groundHeightAt);
+        this.vehicleCamPos.x = initial.position.x;
+        this.vehicleCamPos.y = initial.position.y;
+        this.vehicleCamPos.z = initial.position.z;
+      }
+      this.vehicleCamTarget.x = this.focusTarget.x;
+      this.vehicleCamTarget.y = this.focusTarget.y;
+      this.vehicleCamTarget.z = this.focusTarget.z;
+    } else if (!active && playerAnchor) {
+      this.cameraMode = 'third-person';
+      this.desiredTarget.set(playerAnchor.x, playerAnchor.y, playerAnchor.z);
+    }
+  }
+
+  setVehicleCameraTarget(vehiclePos: Vector3Like, vehicleYaw: number): void {
+    this.vehicleDesiredPos.x = vehiclePos.x;
+    this.vehicleDesiredPos.y = vehiclePos.y;
+    this.vehicleDesiredPos.z = vehiclePos.z;
+    this.vehicleDesiredYaw = vehicleYaw;
+  }
+
   jumpToPreset(preset: PrendaCameraPresetId, followAnchor?: Vector3Like): void {
     switch (preset) {
       case 'center':
@@ -255,6 +306,17 @@ export class ThreeViewportController {
         this.targetPitch = 0.17;
         this.targetDistance = 4.8;
         break;
+      case 'paragem-mercado':
+        this.cameraMode = 'third-person';
+        if (followAnchor) {
+          this.desiredTarget.set(followAnchor.x, followAnchor.y, followAnchor.z);
+        } else {
+          this.setGroundedTarget(337.7, -8.8);
+        }
+        this.targetYaw = 0.42;
+        this.targetPitch = 0.14;
+        this.targetDistance = 5.8;
+        break;
       case 'vista-aerea':
         this.cameraMode = 'free-inspect';
         this.desiredTarget.set(5, 8, 20);
@@ -262,6 +324,12 @@ export class ThreeViewportController {
         this.targetPitch = 0.82;
         this.targetDistance = 148;
         break;
+    }
+    if (this.focusTarget.distanceTo(this.desiredTarget) > 30) {
+      this.focusTarget.copy(this.desiredTarget);
+      this.orbitYaw = this.targetYaw;
+      this.orbitPitch = this.targetPitch;
+      this.orbitDistance = this.targetDistance;
     }
   }
 
@@ -341,6 +409,26 @@ export class ThreeViewportController {
 
   private updateCameraTransform(dt: number, isTitleMode: boolean): void {
     if (!this.camera) return;
+
+    if (!isTitleMode && this.vehicleCameraActive) {
+      const desired = computeDesiredVehicleCameraPose(
+        this.vehicleDesiredPos,
+        this.vehicleDesiredYaw,
+        groundHeightAt,
+      );
+      lerpVehicleCameraPose(
+        this.vehicleCamPos,
+        this.vehicleCamTarget,
+        desired,
+        VEHICLE_CAMERA_LERP,
+        dt,
+      );
+      this.focusTarget.set(this.vehicleCamTarget.x, this.vehicleCamTarget.y, this.vehicleCamTarget.z);
+      this.camera.position.set(this.vehicleCamPos.x, this.vehicleCamPos.y, this.vehicleCamPos.z);
+      this.camera.lookAt(this.focusTarget);
+      return;
+    }
+
     const dampLambda = this.isSoftwareGl ? 18 : 8.5;
     this.orbitYaw = THREE.MathUtils.damp(this.orbitYaw, this.targetYaw, dampLambda, dt);
     this.orbitPitch = THREE.MathUtils.damp(this.orbitPitch, this.targetPitch, dampLambda, dt);
@@ -455,22 +543,28 @@ export class ThreeViewportController {
 
     if (!this.contextLost && this.renderer && this.camera) {
       const isTitle = document.body.dataset.state === 'title';
-      this.updateCameraTransform(dt, isTitle);
-      this.renderer.render(this.scene, this.camera);
-
       this.callbacks.onFrame({
         dt,
         isSoftwareGl: this.isSoftwareGl,
-        drawCalls: this.renderer.info.render.calls,
-        triangles: this.renderer.info.render.triangles,
-        geometries: this.renderer.info.memory.geometries,
-        textures: this.renderer.info.memory.textures,
+        drawCalls: this.lastRenderInfo.drawCalls,
+        triangles: this.lastRenderInfo.triangles,
+        geometries: this.lastRenderInfo.geometries,
+        textures: this.lastRenderInfo.textures,
         targetPosition: {
           x: this.focusTarget.x,
           y: this.focusTarget.y,
           z: this.focusTarget.z,
         },
       });
+
+      this.updateCameraTransform(dt, isTitle);
+      this.renderer.render(this.scene, this.camera);
+      this.lastRenderInfo = {
+        drawCalls: this.renderer.info.render.calls,
+        triangles: this.renderer.info.render.triangles,
+        geometries: this.renderer.info.memory.geometries,
+        textures: this.renderer.info.memory.textures,
+      };
     }
 
     if (this.isSoftwareGl) {
@@ -489,6 +583,8 @@ export class ThreeViewportController {
       this.camera.updateProjectionMatrix();
       this.renderer.setSize(w, h);
       if (!this.contextLost) {
+        const isTitle = document.body.dataset.state === 'title';
+        this.updateCameraTransform(0.016, isTitle);
         this.renderer.render(this.scene, this.camera);
       }
     });

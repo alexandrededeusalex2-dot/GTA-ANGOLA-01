@@ -25,6 +25,7 @@ export class InputManager {
   onToggleMute?: () => void;
   onToggleInspector?: () => void;
   onToggleCameraMode?: () => void;
+  onCancelMission?: () => void;
   onStartFromTitle?: () => void;
 
   attach(): void {
@@ -138,12 +139,17 @@ export class InputManager {
       return;
     }
 
+    if (event.code === 'KeyX') {
+      this.onCancelMission?.();
+      return;
+    }
+
     if (event.code === 'KeyR') {
       this.resetViewQueued = true;
       return;
     }
 
-    if (event.code === 'KeyE') {
+    if (event.code === 'KeyE' || event.code === 'KeyF') {
       this.interactQueued = true;
       return;
     }

@@ -27,28 +27,55 @@ export class EconomyEngine implements EngineModule {
     index: 5,
     name: 'Economy Engine',
     responsibility:
-      'Sistema monetário em Kwanzas (AOA), comércio local, inventário financeiro e registo de transações.',
-    status: 'planned',
-    targetPhase: 'Fase 4',
+      'Sistema monetário em Kwanzas (AOA), recompensas de missões, comércio local e registo de transações.',
+    status: 'implemented',
+    targetPhase: 'Fase 7 — Missão Candongueiro (+100 Kz)',
     dependencies: ['SaveSystem', 'EventBus'],
     pendingTasks: [
-      'Implementar carteira do jogador com validação transacional.',
+      'Expandir carteira do jogador com despesas de combustível e manutenção.',
       'Definir preços de referência para comércio e transportes em Luanda.',
       'Ligar persistência autoritativa ao futuro backend PostgreSQL.',
     ],
   };
 
   private ledger: EconomyTransaction[] = [];
+  private balanceAoa = 0;
 
   init(): void {
-    // Phase 1: Architectural contract ready.
+    this.syncDomAttributes();
+  }
+
+  getBalanceAoa(): number {
+    return this.balanceAoa;
+  }
+
+  awardKwanza(amountAoa: number, reason: string): number {
+    const cleanAmount = Math.round(amountAoa);
+    if (!Number.isFinite(cleanAmount) || cleanAmount <= 0) {
+      return this.balanceAoa;
+    }
+    this.balanceAoa += cleanAmount;
+    this.ledger.push({
+      id: `tx_${this.ledger.length + 1}`,
+      timestampIso: new Date().toISOString(),
+      amountAoa: cleanAmount,
+      reason,
+    });
+    this.syncDomAttributes();
+    return this.balanceAoa;
   }
 
   getLedger(): readonly EconomyTransaction[] {
     return this.ledger;
   }
 
+  private syncDomAttributes(): void {
+    if (typeof document === 'undefined' || !document.body) return;
+    document.body.dataset.kwanza = String(this.balanceAoa);
+  }
+
   dispose(): void {
     this.ledger = [];
+    this.balanceAoa = 0;
   }
 }

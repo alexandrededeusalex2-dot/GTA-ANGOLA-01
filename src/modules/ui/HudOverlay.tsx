@@ -26,10 +26,20 @@ import type {
 } from '../../core/types';
 import type { HudTelemetryState } from '../../engine/AngolaVirtualEngine';
 import type { PrendaCameraPresetId } from '../../engine/ThreeViewportController';
+import {
+  PRENDA_EXPRESS_HUD_TITLE,
+  isMissionInProgress,
+} from '../missions/MissionManager';
+import type { PrendaRoadSegment } from '../world/PrendaCartography';
+import { MiniMap, type MiniMapPose } from './MiniMap';
 import { TouchControls } from './TouchControls';
 
 interface HudOverlayProps {
   readonly telemetry: HudTelemetryState;
+  readonly miniMapRoads: readonly PrendaRoadSegment[];
+  readonly miniMapMercadoPos: { readonly x: number; readonly z: number };
+  readonly miniMapCentroPos: { readonly x: number; readonly z: number };
+  readonly miniMapPoseRef: { readonly current: MiniMapPose };
   readonly onToggleMute: () => void;
   readonly onTogglePause: () => void;
   readonly onOpenArchitecture: () => void;
@@ -43,6 +53,8 @@ interface HudOverlayProps {
   readonly onStickMove: (x: number, y: number) => void;
   readonly onSprintChange: (active: boolean) => void;
   readonly onResetCamera: () => void;
+  readonly onVehicleInteract: () => void;
+  readonly onCancelMission: () => void;
 }
 
 const QUALITY_OPTIONS: { id: QualityTier; label: string }[] = [
@@ -68,6 +80,7 @@ const CAMERA_PRESETS: { id: PrendaCameraPresetId; label: string }[] = [
   { id: 'lotes-1-6', label: 'Lotes 1–6' },
   { id: 'sul-d1-d2', label: 'Blocos Sul' },
   { id: 'v4-comercial', label: 'Via V4' },
+  { id: 'paragem-mercado', label: 'Mercado UV1' },
   { id: 'vista-aerea', label: '7V Aérea' },
 ];
 
@@ -75,7 +88,13 @@ function cameraModeLabel(mode: ExplorerCameraMode): string {
   return mode === 'third-person' ? '3.ª Pessoa' : 'Inspeção';
 }
 
-function locomotionLabel(state: HudTelemetryState['characterLocomotion']): string {
+function locomotionLabel(
+  state: HudTelemetryState['characterLocomotion'],
+  isDrivingVehicle: boolean,
+): string {
+  if (isDrivingVehicle) {
+    return 'A conduzir - [E] sair';
+  }
   switch (state) {
     case 'walk':
       return 'A caminhar';
@@ -92,6 +111,10 @@ function locomotionLabel(state: HudTelemetryState['characterLocomotion']): strin
 
 export function HudOverlay({
   telemetry,
+  miniMapRoads,
+  miniMapMercadoPos,
+  miniMapCentroPos,
+  miniMapPoseRef,
   onToggleMute,
   onTogglePause,
   onOpenArchitecture,
@@ -105,10 +128,13 @@ export function HudOverlay({
   onStickMove,
   onSprintChange,
   onResetCamera,
+  onVehicleInteract,
+  onCancelMission,
 }: HudOverlayProps) {
   const [dockExpanded, setDockExpanded] = useState(() =>
     typeof window !== 'undefined' ? window.innerHeight >= 520 : true,
   );
+  const missionActive = isMissionInProgress(telemetry.missionStatus);
 
   useEffect(() => {
     const handleResize = () => {
@@ -120,30 +146,84 @@ export function HudOverlay({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    if (telemetry.isDrivingVehicle && typeof window !== 'undefined' && window.innerHeight < 520) {
+      setDockExpanded(false);
+    }
+  }, [telemetry.isDrivingVehicle]);
+
   return (
     <div className="fixed inset-0 z-20 pointer-events-none">
       {/* Top HUD Row: Flex layout prevents any overlap between street readout and utility buttons */}
       <div className="fixed top-3 inset-x-3 sm:top-4 sm:inset-x-4 flex items-start justify-between gap-2.5">
-        <div className="pointer-events-auto min-w-0 max-w-[66vw] sm:max-w-xl rounded-xl bg-[#0e1116]/88 border border-white/12 px-3 py-2 shadow-lg">
-          <div className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-100 whitespace-nowrap truncate">
-            <span>ANGOLA VIRTUAL</span>
-            <span aria-hidden="true" className="text-amber-400">·</span>
-            <span className="truncate">Prenda UV n.º 1</span>
+        <div className="pointer-events-none flex flex-col items-start gap-2 min-w-0 max-w-[66vw] sm:max-w-xl">
+          <div className="pointer-events-auto w-full rounded-xl bg-[#0e1116]/88 border border-white/12 px-3 py-2 shadow-lg">
+            <div className="flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-100 whitespace-nowrap truncate">
+              <span>ANGOLA VIRTUAL</span>
+              <span aria-hidden="true" className="text-amber-400">·</span>
+              <span className="truncate">Prenda UV n.º 1</span>
+            </div>
+            <div className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] font-mono-tabular text-slate-300">
+              <span className="inline-flex items-center gap-1 text-emerald-300 truncate max-w-[165px] sm:max-w-[265px]">
+                <MapPin className="w-3 h-3 shrink-0" aria-hidden="true" />
+                <span className="truncate">{telemetry.nearestStreetLabel}</span>
+              </span>
+              <span aria-hidden="true" className="hidden sm:inline">·</span>
+              <span
+                data-testid="hud-locomotion-status"
+                className={telemetry.isDrivingVehicle ? 'text-amber-300 font-sans font-medium' : 'text-sky-300 font-sans'}
+              >
+                {locomotionLabel(telemetry.characterLocomotion, telemetry.isDrivingVehicle)}
+              </span>
+              <span aria-hidden="true">·</span>
+              <span className="text-amber-300">{telemetry.metrics.fps} FPS</span>
+              <span aria-hidden="true" className="hidden md:inline">·</span>
+              <span className="hidden md:inline">{telemetry.metrics.drawCalls} draws</span>
+            </div>
           </div>
-          <div className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] font-mono-tabular text-slate-300">
-            <span className="inline-flex items-center gap-1 text-emerald-300 truncate max-w-[165px] sm:max-w-[265px]">
-              <MapPin className="w-3 h-3 shrink-0" aria-hidden="true" />
-              <span className="truncate">{telemetry.nearestStreetLabel}</span>
-            </span>
-            <span aria-hidden="true" className="hidden sm:inline">·</span>
-            <span className="text-sky-300 font-sans">
-              {locomotionLabel(telemetry.characterLocomotion)}
-            </span>
-            <span aria-hidden="true">·</span>
-            <span className="text-amber-300">{telemetry.metrics.fps} FPS</span>
-            <span aria-hidden="true" className="hidden md:inline">·</span>
-            <span className="hidden md:inline">{telemetry.metrics.drawCalls} draws</span>
-          </div>
+
+          {missionActive && (
+            <div
+              data-testid="hud-mission-bar"
+              className="pointer-events-auto rounded-xl bg-[#0e1116]/92 border border-amber-400/45 px-3 py-1.5 shadow-lg flex flex-wrap items-center gap-2 text-xs"
+            >
+              <span className="font-semibold text-amber-300 whitespace-nowrap">
+                {PRENDA_EXPRESS_HUD_TITLE}
+              </span>
+              <span
+                data-testid="hud-mission-distance"
+                className="font-mono-tabular font-semibold text-slate-100"
+              >
+                {telemetry.missionDistanceMeters}m
+              </span>
+              <button
+                type="button"
+                data-testid="mission-cancel-btn"
+                tabIndex={-1}
+                onClick={(e) => {
+                  e.currentTarget.blur();
+                  onCancelMission();
+                }}
+                className="min-h-[30px] px-2.5 py-0.5 rounded-lg bg-rose-950/90 hover:bg-rose-900 border border-rose-400/40 text-[11px] font-medium text-rose-200 cursor-pointer whitespace-nowrap"
+              >
+                Cancelar Missão [X]
+              </button>
+            </div>
+          )}
+
+          {telemetry.missionBanner && (
+            <div
+              role="status"
+              data-testid="mission-banner"
+              className={`pointer-events-none rounded-xl px-3 py-1.5 text-xs font-semibold shadow-xl border ${
+                telemetry.missionStatus === 'completed'
+                  ? 'bg-emerald-950/95 border-emerald-400/60 text-emerald-200'
+                  : 'bg-[#161b24]/95 border-amber-400/60 text-amber-200'
+              }`}
+            >
+              {telemetry.missionBanner}
+            </div>
+          )}
         </div>
 
         <div className="pointer-events-auto flex items-center gap-1.5 sm:gap-2 shrink-0">
@@ -210,11 +290,24 @@ export function HudOverlay({
         </div>
       </div>
 
+      {/* Top-Right Mini-Map (140x140 Canvas 2D @ 10Hz) + Kz Counter */}
+      {!telemetry.contextLost && (
+        <div className="fixed top-[62px] right-3 sm:top-[68px] sm:right-4 z-20">
+          <MiniMap
+            roads={miniMapRoads}
+            mercadoPos={miniMapMercadoPos}
+            centroPos={miniMapCentroPos}
+            poseRef={miniMapPoseRef}
+            kwanzaBalance={telemetry.kwanzaBalance}
+          />
+        </div>
+      )}
+
       {/* Selected Building / Urban Element Inspection Card */}
       {telemetry.selectedFeature && !telemetry.contextLost && (
         <aside
           aria-label="Ficha do edifício selecionado"
-          className="pointer-events-auto fixed top-20 right-3 sm:right-4 z-20 w-[calc(100vw-24px)] max-w-xs sm:max-w-sm rounded-xl bg-[#0e1116]/92 border border-amber-400/35 p-3.5 shadow-2xl"
+          className="pointer-events-auto fixed top-[256px] sm:top-[68px] right-3 sm:right-[172px] z-20 w-[calc(100vw-24px)] max-w-xs sm:max-w-sm rounded-xl bg-[#0e1116]/92 border border-amber-400/35 p-3.5 shadow-2xl"
         >
           <div className="flex items-start justify-between gap-2">
             <div>
@@ -267,6 +360,40 @@ export function HudOverlay({
           <p className="mt-1 text-xs text-slate-300">
             A aguardar recuperação da GPU do dispositivo...
           </p>
+        </div>
+      )}
+
+      {/* Vehicle Proximity Prompt ("Entrar [E]" / "Sair [E]") positioned clear of bottom dock */}
+      {(telemetry.vehicleFeedback || telemetry.vehiclePrompt) && !telemetry.contextLost && (
+        <div
+          className={`pointer-events-none fixed left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 bottom-16 ${
+            dockExpanded ? 'sm:bottom-44' : 'sm:bottom-16'
+          }`}
+        >
+          {telemetry.vehicleFeedback && (
+            <div
+              role="status"
+              data-testid="vehicle-feedback"
+              className="rounded-xl bg-[#161b24]/95 border border-amber-400/55 px-3.5 py-2 text-xs font-semibold text-amber-300 shadow-xl whitespace-nowrap"
+            >
+              {telemetry.vehicleFeedback}
+            </div>
+          )}
+          {telemetry.vehiclePrompt && (
+            <button
+              type="button"
+              data-testid="vehicle-enter-prompt"
+              tabIndex={-1}
+              onClick={(e) => {
+                e.currentTarget.blur();
+                onVehicleInteract();
+              }}
+              className="pointer-events-auto min-h-[40px] rounded-xl bg-[#0e1116]/94 border border-sky-400/55 px-4 py-2 text-xs font-semibold text-sky-100 hover:bg-slate-800 shadow-xl cursor-pointer inline-flex items-center gap-2 whitespace-nowrap"
+            >
+              <span className="inline-block w-2 h-2 rounded-full bg-sky-400" aria-hidden="true" />
+              <span>{telemetry.vehiclePrompt}</span>
+            </button>
+          )}
         </div>
       )}
 
