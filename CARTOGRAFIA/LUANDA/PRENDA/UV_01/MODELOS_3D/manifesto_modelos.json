@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "targetZone": "Luanda / Bairro Prenda / UV_01",
+  "pipelineFormat": "GLB/GLTF + Conjuntos Arquitetónicos Paramétricos PBR",
+  "assemblies": [
+    {
+      "id": "prenda_modernist_block",
+      "description": "Bloco modernista tropical com pilotis, galerias horizontais (ruas interiores), brise-soleil verticais, caixa de escadas com cobogó e depósitos de cobertura.",
+      "sourceFootprints": "OpenStreetMap (22 edifícios residenciais)"
+    },
+    {
+      "id": "mesquita_do_prenda",
+      "description": "Mesquita comunitária de 2 pisos com pórtico, platibanda e minarete.",
+      "sourceFootprints": "OpenStreetMap way/1389033829"
+    },
+    {
+      "id": "comercio_rua_contemporaneo",
+      "description": "Quiosques/cantinas térreas e bancas cobertas com chapa zincada ondulada.",
+      "sourceFootprints": "Ocupação contemporânea documentada e OSM marketplace"
+    }
+  ],
+  "pendingExternalGlbAssets": [
+    "Personagens humanas realistas em GLB/GLTF (CharacterEngine — Fase 3).",
+    "Veículos angolanos e transportes coletivos em GLB/GLTF (VehicleEngine — Fase 3).",
+    "Levantamento fotogramétrico ou BIM individual dos 22 blocos para confirmação cadastral de cada tipologia."
+  ]
+}

@@ -1,0 +1,1002 @@
+{
+  "type": "FeatureCollection",
+  "name": "PRENDA_UV01_LOTES",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "lote_uv01_1",
+      "properties": {
+        "id": "lote_uv01_1",
+        "buildingId": "edif_osm_60333205",
+        "osmWayId": 60333205,
+        "label": "Bloco Residencial OSM-60333205",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304353.56,
+          "northing": 9022625.47,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2208231,
+              -8.8376134
+            ],
+            [
+              13.2213033,
+              -8.83763
+            ],
+            [
+              13.2213057,
+              -8.8377655
+            ],
+            [
+              13.2208254,
+              -8.8377536
+            ],
+            [
+              13.2208231,
+              -8.8376134
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_2",
+      "properties": {
+        "id": "lote_uv01_2",
+        "buildingId": "edif_osm_60333208",
+        "osmWayId": 60333208,
+        "label": "Bloco Residencial OSM-60333208",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304408.43,
+          "northing": 9022605.14,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2214888,
+              -8.8377087
+            ],
+            [
+              13.2216464,
+              -8.8377135
+            ],
+            [
+              13.2216369,
+              -8.8380438
+            ],
+            [
+              13.2214768,
+              -8.8380415
+            ],
+            [
+              13.2214888,
+              -8.8377087
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_3",
+      "properties": {
+        "id": "lote_uv01_3",
+        "buildingId": "edif_osm_60333217",
+        "osmWayId": 60333217,
+        "label": "Bloco Residencial OSM-60333217",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304467.31,
+          "northing": 9022606.53,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2220216,
+              -8.8376707
+            ],
+            [
+              13.2221793,
+              -8.8376802
+            ],
+            [
+              13.2221674,
+              -8.8380605
+            ],
+            [
+              13.2220216,
+              -8.8380557
+            ],
+            [
+              13.2220216,
+              -8.8376707
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_4",
+      "properties": {
+        "id": "lote_uv01_4",
+        "buildingId": "edif_osm_60333218",
+        "osmWayId": 60333218,
+        "label": "Bloco Residencial OSM-60333218",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304388.35,
+          "northing": 9022562.35,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2211343,
+              -8.8381738
+            ],
+            [
+              13.221623,
+              -8.8381961
+            ],
+            [
+              13.221623,
+              -8.8383454
+            ],
+            [
+              13.2211311,
+              -8.8383359
+            ],
+            [
+              13.2211343,
+              -8.8381738
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_5",
+      "properties": {
+        "id": "lote_uv01_5",
+        "buildingId": "edif_osm_60333224",
+        "osmWayId": 60333224,
+        "label": "Bloco Residencial OSM-60333224",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304565.88,
+          "northing": 9022548.17,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2227282,
+              -8.8383137
+            ],
+            [
+              13.2232521,
+              -8.8383422
+            ],
+            [
+              13.2232521,
+              -8.8384789
+            ],
+            [
+              13.2227314,
+              -8.8384598
+            ],
+            [
+              13.2227282,
+              -8.8383137
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_6",
+      "properties": {
+        "id": "lote_uv01_6",
+        "buildingId": "edif_osm_60333225",
+        "osmWayId": 60333225,
+        "label": "Bloco Residencial OSM-60333225",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304587.85,
+          "northing": 9022603.01,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2231211,
+              -8.8377164
+            ],
+            [
+              13.2232744,
+              -8.8377195
+            ],
+            [
+              13.2232648,
+              -8.8380912
+            ],
+            [
+              13.2231115,
+              -8.8380881
+            ],
+            [
+              13.2231211,
+              -8.8377164
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_7",
+      "properties": {
+        "id": "lote_uv01_7",
+        "buildingId": "edif_osm_60333226",
+        "osmWayId": 60333226,
+        "label": "Bloco Residencial OSM-60333226",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304463.56,
+          "northing": 9022558.58,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2217986,
+              -8.8382152
+            ],
+            [
+              13.2223225,
+              -8.8382437
+            ],
+            [
+              13.2223225,
+              -8.8383804
+            ],
+            [
+              13.2218018,
+              -8.8383613
+            ],
+            [
+              13.2217986,
+              -8.8382152
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_8",
+      "properties": {
+        "id": "lote_uv01_8",
+        "buildingId": "edif_osm_60333227",
+        "osmWayId": 60333227,
+        "label": "Bloco Residencial OSM-60333227",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304524.57,
+          "northing": 9022605.52,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2225461,
+              -8.837691
+            ],
+            [
+              13.2226994,
+              -8.8376941
+            ],
+            [
+              13.2226898,
+              -8.8380658
+            ],
+            [
+              13.2225365,
+              -8.8380627
+            ],
+            [
+              13.2225461,
+              -8.837691
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_9",
+      "properties": {
+        "id": "lote_uv01_9",
+        "buildingId": "edif_osm_60333228",
+        "osmWayId": 60333228,
+        "label": "Bloco Residencial OSM-60333228",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304686.05,
+          "northing": 9022553.18,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2240134,
+              -8.8381452
+            ],
+            [
+              13.2241687,
+              -8.8381507
+            ],
+            [
+              13.2241534,
+              -8.838572
+            ],
+            [
+              13.2239981,
+              -8.8385665
+            ],
+            [
+              13.2240134,
+              -8.8381452
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_10",
+      "properties": {
+        "id": "lote_uv01_10",
+        "buildingId": "edif_osm_60333229",
+        "osmWayId": 60333229,
+        "label": "Bloco Residencial OSM-60333229",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304378.48,
+          "northing": 9022695.94,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2210993,
+              -8.8369616
+            ],
+            [
+              13.2215008,
+              -8.8370032
+            ],
+            [
+              13.2214909,
+              -8.8371477
+            ],
+            [
+              13.2210846,
+              -8.8371061
+            ],
+            [
+              13.2210993,
+              -8.8369616
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_11",
+      "properties": {
+        "id": "lote_uv01_11",
+        "buildingId": "edif_osm_60333235",
+        "osmWayId": 60333235,
+        "label": "Bloco Residencial OSM-60333235",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304392.8,
+          "northing": 9022776.06,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2212521,
+              -8.8362023
+            ],
+            [
+              13.221651,
+              -8.8363101
+            ],
+            [
+              13.2216042,
+              -8.8364546
+            ],
+            [
+              13.2212028,
+              -8.8363566
+            ],
+            [
+              13.2212521,
+              -8.8362023
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_12",
+      "properties": {
+        "id": "lote_uv01_12",
+        "buildingId": "edif_osm_60333237",
+        "osmWayId": 60333237,
+        "label": "lote",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304421.79,
+          "northing": 9022858.29,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2215426,
+              -8.8354455
+            ],
+            [
+              13.221907,
+              -8.8355802
+            ],
+            [
+              13.2218455,
+              -8.8357345
+            ],
+            [
+              13.2214835,
+              -8.8355949
+            ],
+            [
+              13.2215426,
+              -8.8354455
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_13",
+      "properties": {
+        "id": "lote_uv01_13",
+        "buildingId": "edif_osm_60333239",
+        "osmWayId": 60333239,
+        "label": "Bloco Residencial OSM-60333239",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304458.72,
+          "northing": 9022716.64,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2218716,
+              -8.8367402
+            ],
+            [
+              13.2222288,
+              -8.8368487
+            ],
+            [
+              13.2221817,
+              -8.8370018
+            ],
+            [
+              13.2218145,
+              -8.8368932
+            ],
+            [
+              13.2218716,
+              -8.8367402
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_14",
+      "properties": {
+        "id": "lote_uv01_14",
+        "buildingId": "edif_osm_60333241",
+        "osmWayId": 60333241,
+        "label": "Bloco Residencial OSM-60333241",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304474.17,
+          "northing": 9022796.96,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2220155,
+              -8.8360147
+            ],
+            [
+              13.2223727,
+              -8.8361232
+            ],
+            [
+              13.2223256,
+              -8.8362763
+            ],
+            [
+              13.2219584,
+              -8.8361676
+            ],
+            [
+              13.2220155,
+              -8.8360147
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_15",
+      "properties": {
+        "id": "lote_uv01_15",
+        "buildingId": "edif_osm_206102227",
+        "osmWayId": 206102227,
+        "label": "Lote 1",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304694.08,
+          "northing": 9022834.81,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.223998,
+              -8.8359886
+            ],
+            [
+              13.2240982,
+              -8.8360462
+            ],
+            [
+              13.2243392,
+              -8.8356369
+            ],
+            [
+              13.224239,
+              -8.8355793
+            ],
+            [
+              13.223998,
+              -8.8359886
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_16",
+      "properties": {
+        "id": "lote_uv01_16",
+        "buildingId": "edif_osm_206102229",
+        "osmWayId": 206102229,
+        "label": "Lote 3",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304601.84,
+          "northing": 9022884.35,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2231489,
+              -8.835543
+            ],
+            [
+              13.2232744,
+              -8.8356114
+            ],
+            [
+              13.2235158,
+              -8.8351787
+            ],
+            [
+              13.2233903,
+              -8.8351103
+            ],
+            [
+              13.2231489,
+              -8.835543
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_17",
+      "properties": {
+        "id": "lote_uv01_17",
+        "buildingId": "edif_osm_206102230",
+        "osmWayId": 206102230,
+        "label": "Lote 4",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304535.47,
+          "northing": 9022923.2,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2227814,
+              -8.834757
+            ],
+            [
+              13.2229232,
+              -8.8348372
+            ],
+            [
+              13.2226801,
+              -8.8352566
+            ],
+            [
+              13.2225383,
+              -8.8351764
+            ],
+            [
+              13.2227814,
+              -8.834757
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_18",
+      "properties": {
+        "id": "lote_uv01_18",
+        "buildingId": "edif_osm_206102233",
+        "osmWayId": 206102233,
+        "label": "Lote 5",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304486.28,
+          "northing": 9022947.62,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2220956,
+              -8.8349593
+            ],
+            [
+              13.2222414,
+              -8.8350366
+            ],
+            [
+              13.2224738,
+              -8.8346085
+            ],
+            [
+              13.222328,
+              -8.8345313
+            ],
+            [
+              13.2220956,
+              -8.8349593
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_19",
+      "properties": {
+        "id": "lote_uv01_19",
+        "buildingId": "edif_osm_206102235",
+        "osmWayId": 206102235,
+        "label": "Bloco Residencial OSM-206102235",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304766.52,
+          "northing": 9022535.46,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2245888,
+              -8.8386031
+            ],
+            [
+              13.2250394,
+              -8.8386084
+            ],
+            [
+              13.2250394,
+              -8.838444
+            ],
+            [
+              13.2245888,
+              -8.8384334
+            ],
+            [
+              13.2245888,
+              -8.8386031
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_20",
+      "properties": {
+        "id": "lote_uv01_20",
+        "buildingId": "edif_osm_206102237",
+        "osmWayId": 206102237,
+        "label": "Lote 2",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304647.57,
+          "northing": 9022861.83,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.223803,
+              -8.8353198
+            ],
+            [
+              13.2235732,
+              -8.835752
+            ],
+            [
+              13.2236911,
+              -8.8358132
+            ],
+            [
+              13.2239209,
+              -8.835381
+            ],
+            [
+              13.223803,
+              -8.8353198
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_21",
+      "properties": {
+        "id": "lote_uv01_21",
+        "buildingId": "edif_osm_206102238",
+        "osmWayId": 206102238,
+        "label": "Bloco Residencial OSM-206102238",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304702.62,
+          "northing": 9022604.67,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2240289,
+              -8.8379687
+            ],
+            [
+              13.2244366,
+              -8.8379856
+            ],
+            [
+              13.2244437,
+              -8.8378187
+            ],
+            [
+              13.224036,
+              -8.8378019
+            ],
+            [
+              13.2240289,
+              -8.8379687
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "lote_uv01_22",
+      "properties": {
+        "id": "lote_uv01_22",
+        "buildingId": "edif_osm_206102239",
+        "osmWayId": 206102239,
+        "label": "Lote 6",
+        "cadastralBoundsConfirmed": false,
+        "note": "Polígono associado à implantação edificada no OpenStreetMap; limites cadastrais oficiais do lote pendentes.",
+        "utm33s": {
+          "easting": 304439.04,
+          "northing": 9022973.51,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2216648,
+              -8.8347112
+            ],
+            [
+              13.2218068,
+              -8.834793
+            ],
+            [
+              13.222048,
+              -8.8343844
+            ],
+            [
+              13.221906,
+              -8.8343026
+            ],
+            [
+              13.2216648,
+              -8.8347112
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

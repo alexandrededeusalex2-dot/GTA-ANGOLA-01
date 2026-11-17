@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "colorSpaceAlbedo": "sRGB",
+  "colorSpaceDataMaps": "Linear (NoColorSpace)",
+  "proceduralPbrTextures": [
+    "beton_brut_concrete (albedo + bump)",
+    "tropical_plaster_ochre_bands (albedo + roughness)",
+    "luanda_asphalt_road (albedo + bump)",
+    "terra_vermelha_laterite (albedo + bump)",
+    "corrugated_zinc_sheet (albedo + bump)",
+    "courtyard_concrete_paver (albedo + bump)"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "ANGOLA VIRTUAL",
+  "description": "Fundação técnica modular 3D para o videojogo de mundo aberto ANGOLA VIRTUAL (Luanda · Prenda UV n.º 1), otimizado para dispositivos móveis Android com Three.js, WebGL e TypeScript.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

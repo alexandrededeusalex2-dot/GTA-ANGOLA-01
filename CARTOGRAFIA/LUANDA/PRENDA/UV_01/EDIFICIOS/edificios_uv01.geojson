@@ -1,0 +1,1997 @@
+{
+  "type": "FeatureCollection",
+  "name": "PRENDA_UV01_EDIFICIOS",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+  },
+  "metadata": {
+    "metricCrs": "EPSG:32733",
+    "publishedReferencePoint": {
+      "lat": -8.8361111111,
+      "lon": 13.2238888889
+    },
+    "totalFeatures": 34,
+    "historicalResidentialBlocksCount": 22
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "edif_osm_60333205",
+      "properties": {
+        "id": "edif_osm_60333205",
+        "osmWayId": 60333205,
+        "name": "Bloco Residencial OSM-60333205",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco Linear Sul (Tipo D1, 7 pisos — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 7,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Bloco em banda ortogonal sul com pilotis e fachadas em betão aparente/reboco.",
+        "utm33s": {
+          "easting": 304353.56,
+          "northing": 9022625.47,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2208231,
+              -8.8376134
+            ],
+            [
+              13.2213033,
+              -8.83763
+            ],
+            [
+              13.2213057,
+              -8.8377655
+            ],
+            [
+              13.2208254,
+              -8.8377536
+            ],
+            [
+              13.2208231,
+              -8.8376134
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_60333208",
+      "properties": {
+        "id": "edif_osm_60333208",
+        "osmWayId": 60333208,
+        "name": "Bloco Residencial OSM-60333208",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco Linear Sul (Tipo D1, 7 pisos — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 7,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Bloco em banda ortogonal sul com pilotis e fachadas em betão aparente/reboco.",
+        "utm33s": {
+          "easting": 304408.43,
+          "northing": 9022605.14,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2214888,
+              -8.8377087
+            ],
+            [
+              13.2216464,
+              -8.8377135
+            ],
+            [
+              13.2216369,
+              -8.8380438
+            ],
+            [
+              13.2214768,
+              -8.8380415
+            ],
+            [
+              13.2214888,
+              -8.8377087
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_60333217",
+      "properties": {
+        "id": "edif_osm_60333217",
+        "osmWayId": 60333217,
+        "name": "Bloco Residencial OSM-60333217",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco Linear Sul (Tipo D1, 7 pisos — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 7,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Bloco em banda ortogonal sul com pilotis e fachadas em betão aparente/reboco.",
+        "utm33s": {
+          "easting": 304467.31,
+          "northing": 9022606.53,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2220216,
+              -8.8376707
+            ],
+            [
+              13.2221793,
+              -8.8376802
+            ],
+            [
+              13.2221674,
+              -8.8380605
+            ],
+            [
+              13.2220216,
+              -8.8380557
+            ],
+            [
+              13.2220216,
+              -8.8376707
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_60333218",
+      "properties": {
+        "id": "edif_osm_60333218",
+        "osmWayId": 60333218,
+        "name": "Bloco Residencial OSM-60333218",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco Linear Sul (Tipo D2, 6 pisos — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 6,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Bloco em banda ortogonal sul com pilotis e fachadas em betão aparente/reboco.",
+        "utm33s": {
+          "easting": 304388.35,
+          "northing": 9022562.35,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2211343,
+              -8.8381738
+            ],
+            [
+              13.221623,
+              -8.8381961
+            ],
+            [
+              13.221623,
+              -8.8383454
+            ],
+            [
+              13.2211311,
+              -8.8383359
+            ],
+            [
+              13.2211343,
+              -8.8381738
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_60333224",
+      "properties": {
+        "id": "edif_osm_60333224",
+        "osmWayId": 60333224,
+        "name": "Bloco Residencial OSM-60333224",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco Linear Sul (Tipo D2, 6 pisos — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 6,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Bloco em banda ortogonal sul com pilotis e fachadas em betão aparente/reboco.",
+        "utm33s": {
+          "easting": 304565.88,
+          "northing": 9022548.17,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2227282,
+              -8.8383137
+            ],
+            [
+              13.2232521,
+              -8.8383422
+            ],
+            [
+              13.2232521,
+              -8.8384789
+            ],
+            [
+              13.2227314,
+              -8.8384598
+            ],
+            [
+              13.2227282,
+              -8.8383137
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_60333225",
+      "properties": {
+        "id": "edif_osm_60333225",
+        "osmWayId": 60333225,
+        "name": "Bloco Residencial OSM-60333225",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco Linear Sul (Tipo D1, 7 pisos — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 7,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Bloco em banda ortogonal sul com pilotis e fachadas em betão aparente/reboco.",
+        "utm33s": {
+          "easting": 304587.85,
+          "northing": 9022603.01,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2231211,
+              -8.8377164
+            ],
+            [
+              13.2232744,
+              -8.8377195
+            ],
+            [
+              13.2232648,
+              -8.8380912
+            ],
+            [
+              13.2231115,
+              -8.8380881
+            ],
+            [
+              13.2231211,
+              -8.8377164
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_60333226",
+      "properties": {
+        "id": "edif_osm_60333226",
+        "osmWayId": 60333226,
+        "name": "Bloco Residencial OSM-60333226",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco Linear Sul (Tipo D2, 6 pisos — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 6,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Bloco em banda ortogonal sul com pilotis e fachadas em betão aparente/reboco.",
+        "utm33s": {
+          "easting": 304463.56,
+          "northing": 9022558.58,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2217986,
+              -8.8382152
+            ],
+            [
+              13.2223225,
+              -8.8382437
+            ],
+            [
+              13.2223225,
+              -8.8383804
+            ],
+            [
+              13.2218018,
+              -8.8383613
+            ],
+            [
+              13.2217986,
+              -8.8382152
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_60333227",
+      "properties": {
+        "id": "edif_osm_60333227",
+        "osmWayId": 60333227,
+        "name": "Bloco Residencial OSM-60333227",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco Linear Sul (Tipo D1, 7 pisos — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 7,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Bloco em banda ortogonal sul com pilotis e fachadas em betão aparente/reboco.",
+        "utm33s": {
+          "easting": 304524.57,
+          "northing": 9022605.52,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2225461,
+              -8.837691
+            ],
+            [
+              13.2226994,
+              -8.8376941
+            ],
+            [
+              13.2226898,
+              -8.8380658
+            ],
+            [
+              13.2225365,
+              -8.8380627
+            ],
+            [
+              13.2225461,
+              -8.837691
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_60333228",
+      "properties": {
+        "id": "edif_osm_60333228",
+        "osmWayId": 60333228,
+        "name": "Bloco Residencial OSM-60333228",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco Linear Sul (Tipo D2, 6 pisos — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 6,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Bloco em banda ortogonal sul com pilotis e fachadas em betão aparente/reboco.",
+        "utm33s": {
+          "easting": 304686.05,
+          "northing": 9022553.18,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2240134,
+              -8.8381452
+            ],
+            [
+              13.2241687,
+              -8.8381507
+            ],
+            [
+              13.2241534,
+              -8.838572
+            ],
+            [
+              13.2239981,
+              -8.8385665
+            ],
+            [
+              13.2240134,
+              -8.8381452
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_60333229",
+      "properties": {
+        "id": "edif_osm_60333229",
+        "osmWayId": 60333229,
+        "name": "Bloco Residencial OSM-60333229",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco Residencial Oeste/Centro (Tipo A / B1 — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 12,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Setor oeste/central da UV n.º 1 com orientação ventilada sudoeste.",
+        "utm33s": {
+          "easting": 304378.48,
+          "northing": 9022695.94,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2210993,
+              -8.8369616
+            ],
+            [
+              13.2215008,
+              -8.8370032
+            ],
+            [
+              13.2214909,
+              -8.8371477
+            ],
+            [
+              13.2210846,
+              -8.8371061
+            ],
+            [
+              13.2210993,
+              -8.8369616
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_60333235",
+      "properties": {
+        "id": "edif_osm_60333235",
+        "osmWayId": 60333235,
+        "name": "Bloco Residencial OSM-60333235",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Torre / Bloco Oeste (12–16 pisos Tipo A / Torre — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 16,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Setor oeste/central da UV n.º 1 com orientação ventilada sudoeste.",
+        "utm33s": {
+          "easting": 304392.8,
+          "northing": 9022776.06,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2212521,
+              -8.8362023
+            ],
+            [
+              13.221651,
+              -8.8363101
+            ],
+            [
+              13.2216042,
+              -8.8364546
+            ],
+            [
+              13.2212028,
+              -8.8363566
+            ],
+            [
+              13.2212521,
+              -8.8362023
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_60333237",
+      "properties": {
+        "id": "edif_osm_60333237",
+        "osmWayId": 60333237,
+        "name": "lote",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Torre / Bloco Oeste (12–16 pisos Tipo A / Torre — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 16,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Setor oeste/central da UV n.º 1 com orientação ventilada sudoeste.",
+        "utm33s": {
+          "easting": 304421.79,
+          "northing": 9022858.29,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2215426,
+              -8.8354455
+            ],
+            [
+              13.221907,
+              -8.8355802
+            ],
+            [
+              13.2218455,
+              -8.8357345
+            ],
+            [
+              13.2214835,
+              -8.8355949
+            ],
+            [
+              13.2215426,
+              -8.8354455
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_60333239",
+      "properties": {
+        "id": "edif_osm_60333239",
+        "osmWayId": 60333239,
+        "name": "Bloco Residencial OSM-60333239",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco Residencial Oeste/Centro (Tipo A / B1 — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 12,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Setor oeste/central da UV n.º 1 com orientação ventilada sudoeste.",
+        "utm33s": {
+          "easting": 304458.72,
+          "northing": 9022716.64,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2218716,
+              -8.8367402
+            ],
+            [
+              13.2222288,
+              -8.8368487
+            ],
+            [
+              13.2221817,
+              -8.8370018
+            ],
+            [
+              13.2218145,
+              -8.8368932
+            ],
+            [
+              13.2218716,
+              -8.8367402
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_60333241",
+      "properties": {
+        "id": "edif_osm_60333241",
+        "osmWayId": 60333241,
+        "name": "Bloco Residencial OSM-60333241",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco Residencial Oeste/Centro (Tipo A / B1 — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 12,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Setor oeste/central da UV n.º 1 com orientação ventilada sudoeste.",
+        "utm33s": {
+          "easting": 304474.17,
+          "northing": 9022796.96,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2220155,
+              -8.8360147
+            ],
+            [
+              13.2223727,
+              -8.8361232
+            ],
+            [
+              13.2223256,
+              -8.8362763
+            ],
+            [
+              13.2219584,
+              -8.8361676
+            ],
+            [
+              13.2220155,
+              -8.8360147
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_62372074",
+      "properties": {
+        "id": "edif_osm_62372074",
+        "osmWayId": 62372074,
+        "name": "Edifício OSM-62372074",
+        "osmBuildingTag": "yes",
+        "isOneOf22HistoricalBlocks": false,
+        "category": "civic-health",
+        "era": "contemporary",
+        "typologyHypothesis": "Hospital do Prenda (edifício principal mapeado no OSM)",
+        "typologyConfirmed": true,
+        "estimatedFloors": 3,
+        "floorsConfirmed": false,
+        "hasPilotis": false,
+        "hasGallery": true,
+        "structuralNote": "Equipamento hospitalar adjacente à Rua Comandante Arguelles.",
+        "utm33s": {
+          "easting": 304707.93,
+          "northing": 9023200.27,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2240995,
+              -8.8321741
+            ],
+            [
+              13.2242796,
+              -8.8321665
+            ],
+            [
+              13.2242826,
+              -8.8323425
+            ],
+            [
+              13.2245665,
+              -8.832338
+            ],
+            [
+              13.2245741,
+              -8.8324943
+            ],
+            [
+              13.2243208,
+              -8.8324974
+            ],
+            [
+              13.2243223,
+              -8.8325581
+            ],
+            [
+              13.2244276,
+              -8.8325596
+            ],
+            [
+              13.2244337,
+              -8.8327023
+            ],
+            [
+              13.2242582,
+              -8.8327053
+            ],
+            [
+              13.2242567,
+              -8.8326067
+            ],
+            [
+              13.2242033,
+              -8.8326051
+            ],
+            [
+              13.2242063,
+              -8.8326886
+            ],
+            [
+              13.2241132,
+              -8.8326916
+            ],
+            [
+              13.2240995,
+              -8.8321741
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_206102227",
+      "properties": {
+        "id": "edif_osm_206102227",
+        "osmWayId": 206102227,
+        "name": "Lote 1",
+        "osmBuildingTag": "yes",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco em Lote Diagonal (Tipologia Tipo A / B1 — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 8,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Lote 1 — edifício histórico com intervenções contemporâneas e histórico de monitorização estrutural (LEA).",
+        "utm33s": {
+          "easting": 304694.08,
+          "northing": 9022834.81,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.223998,
+              -8.8359886
+            ],
+            [
+              13.2240982,
+              -8.8360462
+            ],
+            [
+              13.2243392,
+              -8.8356369
+            ],
+            [
+              13.224239,
+              -8.8355793
+            ],
+            [
+              13.223998,
+              -8.8359886
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_206102229",
+      "properties": {
+        "id": "edif_osm_206102229",
+        "osmWayId": 206102229,
+        "name": "Lote 3",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco em Lote Diagonal (Tipologia Tipo A / B1 — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 8,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Implantação diagonal sobre pilotis com galerias horizontais.",
+        "utm33s": {
+          "easting": 304601.84,
+          "northing": 9022884.35,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2231489,
+              -8.835543
+            ],
+            [
+              13.2232744,
+              -8.8356114
+            ],
+            [
+              13.2235158,
+              -8.8351787
+            ],
+            [
+              13.2233903,
+              -8.8351103
+            ],
+            [
+              13.2231489,
+              -8.835543
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_206102230",
+      "properties": {
+        "id": "edif_osm_206102230",
+        "osmWayId": 206102230,
+        "name": "Lote 4",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco em Lote Diagonal (Tipologia Tipo A / B1 — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 8,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Implantação diagonal sobre pilotis com galerias horizontais.",
+        "utm33s": {
+          "easting": 304535.47,
+          "northing": 9022923.2,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2227814,
+              -8.834757
+            ],
+            [
+              13.2229232,
+              -8.8348372
+            ],
+            [
+              13.2226801,
+              -8.8352566
+            ],
+            [
+              13.2225383,
+              -8.8351764
+            ],
+            [
+              13.2227814,
+              -8.834757
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_206102233",
+      "properties": {
+        "id": "edif_osm_206102233",
+        "osmWayId": 206102233,
+        "name": "Lote 5",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco em Lote Diagonal (Tipologia Tipo A / B1 — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 12,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Implantação diagonal sobre pilotis com galerias horizontais.",
+        "utm33s": {
+          "easting": 304486.28,
+          "northing": 9022947.62,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2220956,
+              -8.8349593
+            ],
+            [
+              13.2222414,
+              -8.8350366
+            ],
+            [
+              13.2224738,
+              -8.8346085
+            ],
+            [
+              13.222328,
+              -8.8345313
+            ],
+            [
+              13.2220956,
+              -8.8349593
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_206102235",
+      "properties": {
+        "id": "edif_osm_206102235",
+        "osmWayId": 206102235,
+        "name": "Bloco Residencial OSM-206102235",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco Sudeste (referência HPIP 16 pisos sudeste — hipótese zonal)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 16,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Setor sudeste da Unidade de Vizinhança n.º 1.",
+        "utm33s": {
+          "easting": 304766.52,
+          "northing": 9022535.46,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2245888,
+              -8.8386031
+            ],
+            [
+              13.2250394,
+              -8.8386084
+            ],
+            [
+              13.2250394,
+              -8.838444
+            ],
+            [
+              13.2245888,
+              -8.8384334
+            ],
+            [
+              13.2245888,
+              -8.8386031
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_206102237",
+      "properties": {
+        "id": "edif_osm_206102237",
+        "osmWayId": 206102237,
+        "name": "Lote 2",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco em Lote Diagonal (Tipologia Tipo A / B1 — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 8,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Implantação diagonal sobre pilotis com galerias horizontais.",
+        "utm33s": {
+          "easting": 304647.57,
+          "northing": 9022861.83,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.223803,
+              -8.8353198
+            ],
+            [
+              13.2235732,
+              -8.835752
+            ],
+            [
+              13.2236911,
+              -8.8358132
+            ],
+            [
+              13.2239209,
+              -8.835381
+            ],
+            [
+              13.223803,
+              -8.8353198
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_206102238",
+      "properties": {
+        "id": "edif_osm_206102238",
+        "osmWayId": 206102238,
+        "name": "Bloco Residencial OSM-206102238",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco Sul-Este (Tipo D1 7 pisos — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 7,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Setor sudeste da Unidade de Vizinhança n.º 1.",
+        "utm33s": {
+          "easting": 304702.62,
+          "northing": 9022604.67,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2240289,
+              -8.8379687
+            ],
+            [
+              13.2244366,
+              -8.8379856
+            ],
+            [
+              13.2244437,
+              -8.8378187
+            ],
+            [
+              13.224036,
+              -8.8378019
+            ],
+            [
+              13.2240289,
+              -8.8379687
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_206102239",
+      "properties": {
+        "id": "edif_osm_206102239",
+        "osmWayId": 206102239,
+        "name": "Lote 6",
+        "osmBuildingTag": "apartments",
+        "isOneOf22HistoricalBlocks": true,
+        "category": "residential-historical",
+        "era": "historical-1965-adapted",
+        "typologyHypothesis": "Bloco em Lote Diagonal (Tipologia Tipo A / B1 — hipótese zonal HPIP)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 12,
+        "floorsConfirmed": false,
+        "hasPilotis": true,
+        "hasGallery": true,
+        "structuralNote": "Implantação diagonal sobre pilotis com galerias horizontais.",
+        "utm33s": {
+          "easting": 304439.04,
+          "northing": 9022973.51,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2216648,
+              -8.8347112
+            ],
+            [
+              13.2218068,
+              -8.834793
+            ],
+            [
+              13.222048,
+              -8.8343844
+            ],
+            [
+              13.221906,
+              -8.8343026
+            ],
+            [
+              13.2216648,
+              -8.8347112
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_493259906",
+      "properties": {
+        "id": "edif_osm_493259906",
+        "osmWayId": 493259906,
+        "name": "Magnite",
+        "osmBuildingTag": "yes",
+        "isOneOf22HistoricalBlocks": false,
+        "category": "commercial-retail",
+        "era": "contemporary",
+        "typologyHypothesis": "Supermercado Magnite",
+        "typologyConfirmed": true,
+        "estimatedFloors": 1,
+        "floorsConfirmed": false,
+        "hasPilotis": false,
+        "hasGallery": false,
+        "structuralNote": "Comércio contemporâneo georreferenciado no OpenStreetMap.",
+        "utm33s": {
+          "easting": 304554.93,
+          "northing": 9023236.69,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2229512,
+              -8.8322541
+            ],
+            [
+              13.2230078,
+              -8.832166
+            ],
+            [
+              13.2228912,
+              -8.8320928
+            ],
+            [
+              13.2228346,
+              -8.8321809
+            ],
+            [
+              13.2229512,
+              -8.8322541
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_493259908",
+      "properties": {
+        "id": "edif_osm_493259908",
+        "osmWayId": 493259908,
+        "name": "Edifício OSM-493259908",
+        "osmBuildingTag": "yes",
+        "isOneOf22HistoricalBlocks": false,
+        "category": "contemporary-urban",
+        "era": "contemporary",
+        "typologyHypothesis": "Edifício Urbano Contemporâneo (polígono OSM sem tipologia detalhada)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 2,
+        "floorsConfirmed": false,
+        "hasPilotis": false,
+        "hasGallery": false,
+        "structuralNote": "Polígono real do OpenStreetMap no perímetro imediato da UV n.º 1.",
+        "utm33s": {
+          "easting": 304607.81,
+          "northing": 9023209.53,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.223349,
+              -8.8324429
+            ],
+            [
+              13.223377,
+              -8.832371
+            ],
+            [
+              13.2234524,
+              -8.8323997
+            ],
+            [
+              13.2234244,
+              -8.8324716
+            ],
+            [
+              13.223349,
+              -8.8324429
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_493259910",
+      "properties": {
+        "id": "edif_osm_493259910",
+        "osmWayId": 493259910,
+        "name": "Edifício OSM-493259910",
+        "osmBuildingTag": "yes",
+        "isOneOf22HistoricalBlocks": false,
+        "category": "contemporary-urban",
+        "era": "contemporary",
+        "typologyHypothesis": "Edifício Urbano Contemporâneo (polígono OSM sem tipologia detalhada)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 2,
+        "floorsConfirmed": false,
+        "hasPilotis": false,
+        "hasGallery": false,
+        "structuralNote": "Polígono real do OpenStreetMap no perímetro imediato da UV n.º 1.",
+        "utm33s": {
+          "easting": 304428.15,
+          "northing": 9023051.98,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2216562,
+              -8.8343177
+            ],
+            [
+              13.2219873,
+              -8.8337185
+            ],
+            [
+              13.2219632,
+              -8.8337046
+            ],
+            [
+              13.2219704,
+              -8.8336928
+            ],
+            [
+              13.2219979,
+              -8.8336475
+            ],
+            [
+              13.2217752,
+              -8.8335274
+            ],
+            [
+              13.2217489,
+              -8.833575
+            ],
+            [
+              13.2217905,
+              -8.8335975
+            ],
+            [
+              13.2217748,
+              -8.833626
+            ],
+            [
+              13.2219246,
+              -8.8337069
+            ],
+            [
+              13.2217675,
+              -8.8339915
+            ],
+            [
+              13.2215692,
+              -8.8338845
+            ],
+            [
+              13.2215376,
+              -8.8339416
+            ],
+            [
+              13.2215805,
+              -8.8339648
+            ],
+            [
+              13.2215675,
+              -8.8339884
+            ],
+            [
+              13.2217214,
+              -8.8340714
+            ],
+            [
+              13.2216016,
+              -8.8342883
+            ],
+            [
+              13.2216562,
+              -8.8343177
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_493259913",
+      "properties": {
+        "id": "edif_osm_493259913",
+        "osmWayId": 493259913,
+        "name": "Edifício OSM-493259913",
+        "osmBuildingTag": "yes",
+        "isOneOf22HistoricalBlocks": false,
+        "category": "contemporary-urban",
+        "era": "contemporary",
+        "typologyHypothesis": "Edifício Urbano Contemporâneo (polígono OSM sem tipologia detalhada)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 2,
+        "floorsConfirmed": false,
+        "hasPilotis": false,
+        "hasGallery": false,
+        "structuralNote": "Polígono real do OpenStreetMap no perímetro imediato da UV n.º 1.",
+        "utm33s": {
+          "easting": 304392.24,
+          "northing": 9022995.33,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2215921,
+              -8.8343766
+            ],
+            [
+              13.2213694,
+              -8.8342609
+            ],
+            [
+              13.2213413,
+              -8.8343136
+            ],
+            [
+              13.2213753,
+              -8.8343313
+            ],
+            [
+              13.2213625,
+              -8.8343553
+            ],
+            [
+              13.2215513,
+              -8.8344533
+            ],
+            [
+              13.2215921,
+              -8.8343766
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_493259915",
+      "properties": {
+        "id": "edif_osm_493259915",
+        "osmWayId": 493259915,
+        "name": "Edifício OSM-493259915",
+        "osmBuildingTag": "yes",
+        "isOneOf22HistoricalBlocks": false,
+        "category": "contemporary-urban",
+        "era": "contemporary",
+        "typologyHypothesis": "Edifício Urbano Contemporâneo (polígono OSM sem tipologia detalhada)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 2,
+        "floorsConfirmed": false,
+        "hasPilotis": false,
+        "hasGallery": false,
+        "structuralNote": "Polígono real do OpenStreetMap no perímetro imediato da UV n.º 1.",
+        "utm33s": {
+          "easting": 304421.83,
+          "northing": 9023058.39,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2218212,
+              -8.8337861
+            ],
+            [
+              13.2216717,
+              -8.8337071
+            ],
+            [
+              13.2216441,
+              -8.8337581
+            ],
+            [
+              13.2216607,
+              -8.8337669
+            ],
+            [
+              13.2216456,
+              -8.8337948
+            ],
+            [
+              13.2217785,
+              -8.833865
+            ],
+            [
+              13.2218212,
+              -8.8337861
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_493259917",
+      "properties": {
+        "id": "edif_osm_493259917",
+        "osmWayId": 493259917,
+        "name": "Edifício OSM-493259917",
+        "osmBuildingTag": "yes",
+        "isOneOf22HistoricalBlocks": false,
+        "category": "contemporary-urban",
+        "era": "contemporary",
+        "typologyHypothesis": "Edifício Urbano Contemporâneo (polígono OSM sem tipologia detalhada)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 2,
+        "floorsConfirmed": false,
+        "hasPilotis": false,
+        "hasGallery": false,
+        "structuralNote": "Polígono real do OpenStreetMap no perímetro imediato da UV n.º 1.",
+        "utm33s": {
+          "easting": 304400.84,
+          "northing": 9023017.66,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2216182,
+              -8.8341502
+            ],
+            [
+              13.2214683,
+              -8.8340698
+            ],
+            [
+              13.2214391,
+              -8.8341229
+            ],
+            [
+              13.2214867,
+              -8.8341485
+            ],
+            [
+              13.2214761,
+              -8.8341679
+            ],
+            [
+              13.2215783,
+              -8.8342228
+            ],
+            [
+              13.2216182,
+              -8.8341502
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_493259923",
+      "properties": {
+        "id": "edif_osm_493259923",
+        "osmWayId": 493259923,
+        "name": "Edifício OSM-493259923",
+        "osmBuildingTag": "yes",
+        "isOneOf22HistoricalBlocks": false,
+        "category": "contemporary-urban",
+        "era": "contemporary",
+        "typologyHypothesis": "Edifício Urbano Contemporâneo (polígono OSM sem tipologia detalhada)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 2,
+        "floorsConfirmed": false,
+        "hasPilotis": false,
+        "hasGallery": false,
+        "structuralNote": "Polígono real do OpenStreetMap no perímetro imediato da UV n.º 1.",
+        "utm33s": {
+          "easting": 304461.54,
+          "northing": 9023072.58,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.222087,
+              -8.8337201
+            ],
+            [
+              13.2221445,
+              -8.833619
+            ],
+            [
+              13.2220643,
+              -8.8335745
+            ],
+            [
+              13.2220206,
+              -8.8336515
+            ],
+            [
+              13.2220443,
+              -8.8336647
+            ],
+            [
+              13.2220306,
+              -8.8336888
+            ],
+            [
+              13.222087,
+              -8.8337201
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_493259925",
+      "properties": {
+        "id": "edif_osm_493259925",
+        "osmWayId": 493259925,
+        "name": "Edifício OSM-493259925",
+        "osmBuildingTag": "yes",
+        "isOneOf22HistoricalBlocks": false,
+        "category": "contemporary-urban",
+        "era": "contemporary",
+        "typologyHypothesis": "Edifício Urbano Contemporâneo (polígono OSM sem tipologia detalhada)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 2,
+        "floorsConfirmed": false,
+        "hasPilotis": false,
+        "hasGallery": false,
+        "structuralNote": "Polígono real do OpenStreetMap no perímetro imediato da UV n.º 1.",
+        "utm33s": {
+          "easting": 304421.45,
+          "northing": 9022994.81,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2215392,
+              -8.834559
+            ],
+            [
+              13.221707,
+              -8.8342536
+            ],
+            [
+              13.2217324,
+              -8.8342672
+            ],
+            [
+              13.2217653,
+              -8.8342073
+            ],
+            [
+              13.2218209,
+              -8.8342371
+            ],
+            [
+              13.2216202,
+              -8.8346024
+            ],
+            [
+              13.2215392,
+              -8.834559
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_532434467",
+      "properties": {
+        "id": "edif_osm_532434467",
+        "osmWayId": 532434467,
+        "name": "Edifício OSM-532434467",
+        "osmBuildingTag": "yes",
+        "isOneOf22HistoricalBlocks": false,
+        "category": "contemporary-urban",
+        "era": "contemporary",
+        "typologyHypothesis": "Edifício Urbano Contemporâneo (polígono OSM sem tipologia detalhada)",
+        "typologyConfirmed": false,
+        "estimatedFloors": 2,
+        "floorsConfirmed": false,
+        "hasPilotis": false,
+        "hasGallery": false,
+        "structuralNote": "Polígono real do OpenStreetMap no perímetro imediato da UV n.º 1.",
+        "utm33s": {
+          "easting": 305053.4,
+          "northing": 9022926.89,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2273097,
+              -8.8350401
+            ],
+            [
+              13.2273974,
+              -8.8349554
+            ],
+            [
+              13.2274556,
+              -8.8348667
+            ],
+            [
+              13.2276083,
+              -8.8349719
+            ],
+            [
+              13.2274221,
+              -8.8351443
+            ],
+            [
+              13.2273097,
+              -8.8350401
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_701218880",
+      "properties": {
+        "id": "edif_osm_701218880",
+        "osmWayId": 701218880,
+        "name": "Kibabo",
+        "osmBuildingTag": "yes",
+        "isOneOf22HistoricalBlocks": false,
+        "category": "commercial-retail",
+        "era": "contemporary",
+        "typologyHypothesis": "Supermercado Kibabo",
+        "typologyConfirmed": true,
+        "estimatedFloors": 1,
+        "floorsConfirmed": false,
+        "hasPilotis": false,
+        "hasGallery": false,
+        "structuralNote": "Comércio contemporâneo georreferenciado no OpenStreetMap.",
+        "utm33s": {
+          "easting": 304412.86,
+          "northing": 9022658.33,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2216866,
+              -8.837339
+            ],
+            [
+              13.2215258,
+              -8.8373352
+            ],
+            [
+              13.2215229,
+              -8.8374532
+            ],
+            [
+              13.2216838,
+              -8.837457
+            ],
+            [
+              13.2216866,
+              -8.837339
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "edif_osm_1389033829",
+      "properties": {
+        "id": "edif_osm_1389033829",
+        "osmWayId": 1389033829,
+        "name": "Mesquita do Prenda",
+        "osmBuildingTag": "mosque",
+        "isOneOf22HistoricalBlocks": false,
+        "category": "religious-community",
+        "era": "contemporary",
+        "typologyHypothesis": "Mesquita do Prenda (edifício religioso comunitário)",
+        "typologyConfirmed": true,
+        "estimatedFloors": 2,
+        "floorsConfirmed": true,
+        "hasPilotis": false,
+        "hasGallery": false,
+        "structuralNote": "Confirmado no OpenStreetMap (building=mosque, building:levels=2).",
+        "utm33s": {
+          "easting": 304743.5,
+          "northing": 9022782.35,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap + HPIP (enquadramento histórico)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2246045,
+              -8.8362042
+            ],
+            [
+              13.2246923,
+              -8.8362483
+            ],
+            [
+              13.2246522,
+              -8.8363214
+            ],
+            [
+              13.2246029,
+              -8.8363579
+            ],
+            [
+              13.2245259,
+              -8.8363138
+            ],
+            [
+              13.2246045,
+              -8.8362042
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

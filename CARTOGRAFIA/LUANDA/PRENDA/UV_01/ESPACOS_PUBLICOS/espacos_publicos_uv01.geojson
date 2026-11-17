@@ -1,0 +1,1684 @@
+{
+  "type": "FeatureCollection",
+  "name": "PRENDA_UV01_ESPACOS_PUBLICOS",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "pub_osm_62372132",
+      "properties": {
+        "id": "pub_osm_62372132",
+        "osmWayId": 62372132,
+        "name": "Hospital do Prenda",
+        "kind": "amenity:hospital",
+        "utm33s": {
+          "easting": 304679.18,
+          "northing": 9023176.64,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.224048,
+              -8.8327217
+            ],
+            [
+              13.2238988,
+              -8.8327189
+            ],
+            [
+              13.223774,
+              -8.832584
+            ],
+            [
+              13.2237468,
+              -8.8322251
+            ],
+            [
+              13.2237631,
+              -8.8321361
+            ],
+            [
+              13.2238201,
+              -8.8321037
+            ],
+            [
+              13.2239612,
+              -8.8320767
+            ],
+            [
+              13.2243871,
+              -8.8320255
+            ],
+            [
+              13.2248591,
+              -8.8319688
+            ],
+            [
+              13.2248999,
+              -8.8327918
+            ],
+            [
+              13.224738,
+              -8.8327927
+            ],
+            [
+              13.224738,
+              -8.832951
+            ],
+            [
+              13.2246874,
+              -8.8330805
+            ],
+            [
+              13.2244921,
+              -8.8330481
+            ],
+            [
+              13.2242714,
+              -8.8329761
+            ],
+            [
+              13.2240652,
+              -8.8328682
+            ],
+            [
+              13.224048,
+              -8.8327217
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_osm_151245577",
+      "properties": {
+        "id": "pub_osm_151245577",
+        "osmWayId": 151245577,
+        "name": "wall",
+        "kind": "barrier:wall",
+        "utm33s": {
+          "easting": 304865.45,
+          "northing": 9023203.56,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            13.2257422,
+            -8.8324863
+          ],
+          [
+            13.2260363,
+            -8.8334644
+          ],
+          [
+            13.2261323,
+            -8.8334375
+          ],
+          [
+            13.2258328,
+            -8.8324574
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_osm_151245579",
+      "properties": {
+        "id": "pub_osm_151245579",
+        "osmWayId": 151245579,
+        "name": "hedge",
+        "kind": "barrier:hedge",
+        "utm33s": {
+          "easting": 304909.07,
+          "northing": 9023059.06,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2261325,
+              -8.8337946
+            ],
+            [
+              13.226231,
+              -8.8340335
+            ],
+            [
+              13.2263345,
+              -8.8342197
+            ],
+            [
+              13.2264589,
+              -8.8343952
+            ],
+            [
+              13.2265791,
+              -8.8345534
+            ],
+            [
+              13.2266471,
+              -8.8344918
+            ],
+            [
+              13.2265432,
+              -8.8343474
+            ],
+            [
+              13.2264065,
+              -8.8341651
+            ],
+            [
+              13.2263129,
+              -8.8339874
+            ],
+            [
+              13.2262208,
+              -8.8337676
+            ],
+            [
+              13.2261325,
+              -8.8337946
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_osm_151245585",
+      "properties": {
+        "id": "pub_osm_151245585",
+        "osmWayId": 151245585,
+        "name": "wall",
+        "kind": "barrier:wall",
+        "utm33s": {
+          "easting": 305071.33,
+          "northing": 9022865.66,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            13.227599,
+            -8.8355501
+          ],
+          [
+            13.2268471,
+            -8.8347106
+          ],
+          [
+            13.2267725,
+            -8.8347704
+          ],
+          [
+            13.2275074,
+            -8.8356148
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_osm_206107010",
+      "properties": {
+        "id": "pub_osm_206107010",
+        "osmWayId": 206107010,
+        "name": "college",
+        "kind": "amenity:college",
+        "utm33s": {
+          "easting": 304235.95,
+          "northing": 9022532.18,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2199913,
+              -8.838529
+            ],
+            [
+              13.2201914,
+              -8.8387872
+            ],
+            [
+              13.2201983,
+              -8.8388387
+            ],
+            [
+              13.220501,
+              -8.8389636
+            ],
+            [
+              13.2210428,
+              -8.8388152
+            ],
+            [
+              13.2211594,
+              -8.8386641
+            ],
+            [
+              13.2212332,
+              -8.8384865
+            ],
+            [
+              13.2206994,
+              -8.8382507
+            ],
+            [
+              13.2206082,
+              -8.8384123
+            ],
+            [
+              13.2200779,
+              -8.838285
+            ],
+            [
+              13.2199913,
+              -8.838529
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_osm_493259905",
+      "properties": {
+        "id": "pub_osm_493259905",
+        "osmWayId": 493259905,
+        "name": "yes",
+        "kind": "barrier:yes",
+        "utm33s": {
+          "easting": 304841.23,
+          "northing": 9023065.8,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            13.2255161,
+            -8.8337307
+          ],
+          [
+            13.2242112,
+            -8.8330524
+          ],
+          [
+            13.223593,
+            -8.8327053
+          ],
+          [
+            13.2229627,
+            -8.8323807
+          ],
+          [
+            13.2217283,
+            -8.8317071
+          ],
+          [
+            13.2205918,
+            -8.8311236
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_osm_493259919",
+      "properties": {
+        "id": "pub_osm_493259919",
+        "osmWayId": 493259919,
+        "name": "wall",
+        "kind": "barrier:wall",
+        "utm33s": {
+          "easting": 304473.88,
+          "northing": 9023077.78,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2221776,
+              -8.8336066
+            ],
+            [
+              13.2221844,
+              -8.8335861
+            ],
+            [
+              13.2221765,
+              -8.8335722
+            ],
+            [
+              13.2221554,
+              -8.8335604
+            ],
+            [
+              13.2220664,
+              -8.8335143
+            ],
+            [
+              13.2218495,
+              -8.8333956
+            ],
+            [
+              13.2218256,
+              -8.8333861
+            ],
+            [
+              13.2217992,
+              -8.8333903
+            ],
+            [
+              13.2217809,
+              -8.8334038
+            ],
+            [
+              13.221226,
+              -8.834403
+            ],
+            [
+              13.2216227,
+              -8.8346071
+            ],
+            [
+              13.222092,
+              -8.8337586
+            ],
+            [
+              13.2221776,
+              -8.8336066
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_osm_493259921",
+      "properties": {
+        "id": "pub_osm_493259921",
+        "osmWayId": 493259921,
+        "name": "wall",
+        "kind": "barrier:wall",
+        "utm33s": {
+          "easting": 304461.6,
+          "northing": 9023087.93,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            13.2220664,
+            -8.8335143
+          ],
+          [
+            13.2219704,
+            -8.8336928
+          ],
+          [
+            13.222092,
+            -8.8337586
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_osm_959891393",
+      "properties": {
+        "id": "pub_osm_959891393",
+        "osmWayId": 959891393,
+        "name": "marketplace",
+        "kind": "amenity:marketplace",
+        "utm33s": {
+          "easting": 305076.79,
+          "northing": 9022826.08,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2276469,
+              -8.8359081
+            ],
+            [
+              13.2276941,
+              -8.8359667
+            ],
+            [
+              13.2273371,
+              -8.8362391
+            ],
+            [
+              13.2272263,
+              -8.8361604
+            ],
+            [
+              13.2270934,
+              -8.8361176
+            ],
+            [
+              13.2268357,
+              -8.8360219
+            ],
+            [
+              13.226768,
+              -8.8360278
+            ],
+            [
+              13.2267093,
+              -8.8360506
+            ],
+            [
+              13.2266456,
+              -8.8360813
+            ],
+            [
+              13.226593,
+              -8.836133
+            ],
+            [
+              13.2264284,
+              -8.8360573
+            ],
+            [
+              13.2263672,
+              -8.8360275
+            ],
+            [
+              13.2263059,
+              -8.8360393
+            ],
+            [
+              13.2262256,
+              -8.8361009
+            ],
+            [
+              13.2261874,
+              -8.8360602
+            ],
+            [
+              13.2263654,
+              -8.8358922
+            ],
+            [
+              13.2265535,
+              -8.8360204
+            ],
+            [
+              13.2266169,
+              -8.83604
+            ],
+            [
+              13.2266803,
+              -8.8360199
+            ],
+            [
+              13.2267386,
+              -8.8359948
+            ],
+            [
+              13.2267849,
+              -8.8359578
+            ],
+            [
+              13.2269893,
+              -8.8360288
+            ],
+            [
+              13.2270986,
+              -8.8360664
+            ],
+            [
+              13.2272078,
+              -8.836078
+            ],
+            [
+              13.2273347,
+              -8.8361384
+            ],
+            [
+              13.2274041,
+              -8.836106
+            ],
+            [
+              13.2274636,
+              -8.8360577
+            ],
+            [
+              13.2276469,
+              -8.8359081
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_osm_1124510826",
+      "properties": {
+        "id": "pub_osm_1124510826",
+        "osmWayId": 1124510826,
+        "name": "residential",
+        "kind": "landuse:residential",
+        "utm33s": {
+          "easting": 304397.3,
+          "northing": 9023569.93,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2215029,
+              -8.8291539
+            ],
+            [
+              13.2257211,
+              -8.8295704
+            ],
+            [
+              13.2258875,
+              -8.8296204
+            ],
+            [
+              13.2258418,
+              -8.8297804
+            ],
+            [
+              13.2256856,
+              -8.8305847
+            ],
+            [
+              13.2257172,
+              -8.8321248
+            ],
+            [
+              13.225714,
+              -8.8322683
+            ],
+            [
+              13.2257052,
+              -8.8324779
+            ],
+            [
+              13.2258777,
+              -8.8331363
+            ],
+            [
+              13.2258673,
+              -8.8332314
+            ],
+            [
+              13.2258559,
+              -8.8332817
+            ],
+            [
+              13.2258393,
+              -8.8333343
+            ],
+            [
+              13.225803,
+              -8.8334011
+            ],
+            [
+              13.2257583,
+              -8.8334561
+            ],
+            [
+              13.2257111,
+              -8.8334995
+            ],
+            [
+              13.2256638,
+              -8.8335345
+            ],
+            [
+              13.2256115,
+              -8.8335612
+            ],
+            [
+              13.2255617,
+              -8.8335795
+            ],
+            [
+              13.2254933,
+              -8.8335895
+            ],
+            [
+              13.2253929,
+              -8.8335879
+            ],
+            [
+              13.2253028,
+              -8.8335894
+            ],
+            [
+              13.2249128,
+              -8.833382
+            ],
+            [
+              13.2248389,
+              -8.8332965
+            ],
+            [
+              13.2248063,
+              -8.8332559
+            ],
+            [
+              13.2247897,
+              -8.8332153
+            ],
+            [
+              13.2247726,
+              -8.833153
+            ],
+            [
+              13.224781,
+              -8.8330908
+            ],
+            [
+              13.2248117,
+              -8.8330337
+            ],
+            [
+              13.224821,
+              -8.8329766
+            ],
+            [
+              13.2248254,
+              -8.8327476
+            ],
+            [
+              13.2248229,
+              -8.8326048
+            ],
+            [
+              13.2248591,
+              -8.8319688
+            ],
+            [
+              13.2243871,
+              -8.8320255
+            ],
+            [
+              13.2239612,
+              -8.8320767
+            ],
+            [
+              13.2238201,
+              -8.8321037
+            ],
+            [
+              13.2237631,
+              -8.8321361
+            ],
+            [
+              13.2237468,
+              -8.8322251
+            ],
+            [
+              13.223774,
+              -8.832584
+            ],
+            [
+              13.2237385,
+              -8.8327575
+            ],
+            [
+              13.2207813,
+              -8.8311848
+            ],
+            [
+              13.2205822,
+              -8.8310478
+            ],
+            [
+              13.2205115,
+              -8.8309508
+            ],
+            [
+              13.2204552,
+              -8.8308188
+            ],
+            [
+              13.2204401,
+              -8.8307286
+            ],
+            [
+              13.2204596,
+              -8.8306167
+            ],
+            [
+              13.2205388,
+              -8.8304008
+            ],
+            [
+              13.2208422,
+              -8.8300205
+            ],
+            [
+              13.2211559,
+              -8.8296217
+            ],
+            [
+              13.2213146,
+              -8.8294094
+            ],
+            [
+              13.2213919,
+              -8.829306
+            ],
+            [
+              13.2215029,
+              -8.8291539
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_osm_1124510835",
+      "properties": {
+        "id": "pub_osm_1124510835",
+        "osmWayId": 1124510835,
+        "name": "construction",
+        "kind": "landuse:construction",
+        "utm33s": {
+          "easting": 304428.68,
+          "northing": 9023110.4,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2217682,
+              -8.8333098
+            ],
+            [
+              13.2222772,
+              -8.833575
+            ],
+            [
+              13.2219225,
+              -8.834213
+            ],
+            [
+              13.2216779,
+              -8.8346377
+            ],
+            [
+              13.2216227,
+              -8.8346071
+            ],
+            [
+              13.221226,
+              -8.834403
+            ],
+            [
+              13.2212044,
+              -8.8343927
+            ],
+            [
+              13.2217682,
+              -8.8333098
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_osm_1124510836",
+      "properties": {
+        "id": "pub_osm_1124510836",
+        "osmWayId": 1124510836,
+        "name": "residential",
+        "kind": "landuse:residential",
+        "utm33s": {
+          "easting": 304367.23,
+          "northing": 9022990.32,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              13.2212044,
+              -8.8343927
+            ],
+            [
+              13.221226,
+              -8.834403
+            ],
+            [
+              13.2216227,
+              -8.8346071
+            ],
+            [
+              13.2216779,
+              -8.8346377
+            ],
+            [
+              13.2215712,
+              -8.8348229
+            ],
+            [
+              13.2215426,
+              -8.8348668
+            ],
+            [
+              13.2215175,
+              -8.8348916
+            ],
+            [
+              13.221485,
+              -8.834904
+            ],
+            [
+              13.2214421,
+              -8.8349071
+            ],
+            [
+              13.2214,
+              -8.8348945
+            ],
+            [
+              13.2210391,
+              -8.8347106
+            ],
+            [
+              13.2212044,
+              -8.8343927
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115493",
+      "properties": {
+        "id": "pub_node_2157115493",
+        "osmNodeId": 2157115493,
+        "name": "atm",
+        "kind": "amenity:atm",
+        "utm33s": {
+          "easting": 304658.08,
+          "northing": 9023127.59,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2238541,
+          -8.8331642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115498",
+      "properties": {
+        "id": "pub_node_2157115498",
+        "osmNodeId": 2157115498,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304354.86,
+          "northing": 9022854.68,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2210861,
+          -8.8356185
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115502",
+      "properties": {
+        "id": "pub_node_2157115502",
+        "osmNodeId": 2157115502,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304364.07,
+          "northing": 9022599.58,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2211588,
+          -8.8379252
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115504",
+      "properties": {
+        "id": "pub_node_2157115504",
+        "osmNodeId": 2157115504,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304561.7,
+          "northing": 9022918.4,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.222969,
+          -8.8350513
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115505",
+      "properties": {
+        "id": "pub_node_2157115505",
+        "osmNodeId": 2157115505,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304659.81,
+          "northing": 9022519,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2238434,
+          -8.8386664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115506",
+      "properties": {
+        "id": "pub_node_2157115506",
+        "osmNodeId": 2157115506,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304624.18,
+          "northing": 9022614.94,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2235237,
+          -8.8377975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115510",
+      "properties": {
+        "id": "pub_node_2157115510",
+        "osmNodeId": 2157115510,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304627.09,
+          "northing": 9022883.83,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2235618,
+          -8.8353667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115517",
+      "properties": {
+        "id": "pub_node_2157115517",
+        "osmNodeId": 2157115517,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304309.36,
+          "northing": 9022680.33,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.220665,
+          -8.8371928
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115526",
+      "properties": {
+        "id": "pub_node_2157115526",
+        "osmNodeId": 2157115526,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304512.6,
+          "northing": 9022942.79,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2225237,
+          -8.8348287
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115529",
+      "properties": {
+        "id": "pub_node_2157115529",
+        "osmNodeId": 2157115529,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304677.35,
+          "northing": 9022861.79,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2240177,
+          -8.8355681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115530",
+      "properties": {
+        "id": "pub_node_2157115530",
+        "osmNodeId": 2157115530,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304330.78,
+          "northing": 9022769.55,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2208635,
+          -8.8363871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115534",
+      "properties": {
+        "id": "pub_node_2157115534",
+        "osmNodeId": 2157115534,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304566.49,
+          "northing": 9022595.37,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2229985,
+          -8.837972
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115535",
+      "properties": {
+        "id": "pub_node_2157115535",
+        "osmNodeId": 2157115535,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304392.83,
+          "northing": 9022936.94,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2214348,
+          -8.8348764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115540",
+      "properties": {
+        "id": "pub_node_2157115540",
+        "osmNodeId": 2157115540,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304493,
+          "northing": 9022597.06,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2223306,
+          -8.8379535
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115541",
+      "properties": {
+        "id": "pub_node_2157115541",
+        "osmNodeId": 2157115541,
+        "name": "bank",
+        "kind": "amenity:bank",
+        "utm33s": {
+          "easting": 304642.95,
+          "northing": 9023133.91,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2237168,
+          -8.8331064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115546",
+      "properties": {
+        "id": "pub_node_2157115546",
+        "osmNodeId": 2157115546,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304342.37,
+          "northing": 9022688.11,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2209654,
+          -8.8371239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115561",
+      "properties": {
+        "id": "pub_node_2157115561",
+        "osmNodeId": 2157115561,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304697.66,
+          "northing": 9023120.16,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2242135,
+          -8.8332331
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115562",
+      "properties": {
+        "id": "pub_node_2157115562",
+        "osmNodeId": 2157115562,
+        "name": "bank",
+        "kind": "amenity:bank",
+        "utm33s": {
+          "easting": 304681.77,
+          "northing": 9023111.88,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2240687,
+          -8.8333073
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115567",
+      "properties": {
+        "id": "pub_node_2157115567",
+        "osmNodeId": 2157115567,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304588.2,
+          "northing": 9023178.26,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2232211,
+          -8.8327031
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115573",
+      "properties": {
+        "id": "pub_node_2157115573",
+        "osmNodeId": 2157115573,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304449.03,
+          "northing": 9022600.08,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.221931,
+          -8.8379243
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115579",
+      "properties": {
+        "id": "pub_node_2157115579",
+        "osmNodeId": 2157115579,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304471.37,
+          "northing": 9022740.02,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2221402,
+          -8.8366601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115582",
+      "properties": {
+        "id": "pub_node_2157115582",
+        "osmNodeId": 2157115582,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304459.96,
+          "northing": 9022966.29,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2220463,
+          -8.834614
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_2157115583",
+      "properties": {
+        "id": "pub_node_2157115583",
+        "osmNodeId": 2157115583,
+        "name": "Bolsa de Estacionamento",
+        "kind": "amenity:parking",
+        "utm33s": {
+          "easting": 304518.88,
+          "northing": 9022554.09,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.222564,
+          -8.8383431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_5171684566",
+      "properties": {
+        "id": "pub_node_5171684566",
+        "osmNodeId": 5171684566,
+        "name": "Cyber Café do Prenda",
+        "kind": "amenity:internet_cafe",
+        "utm33s": {
+          "easting": 305052.76,
+          "northing": 9022853.32,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2274297,
+          -8.8356608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_5171684568",
+      "properties": {
+        "id": "pub_node_5171684568",
+        "osmNodeId": 5171684568,
+        "name": "Jumbo Maggi",
+        "kind": "amenity:restaurant",
+        "utm33s": {
+          "easting": 305035.94,
+          "northing": 9022867.12,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2272774,
+          -8.8355353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_8881067443",
+      "properties": {
+        "id": "pub_node_8881067443",
+        "osmNodeId": 8881067443,
+        "name": "fast_food",
+        "kind": "amenity:fast_food",
+        "utm33s": {
+          "easting": 304853.59,
+          "northing": 9023211.85,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2256348,
+          -8.8324109
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_8881099664",
+      "properties": {
+        "id": "pub_node_8881099664",
+        "osmNodeId": 8881099664,
+        "name": "Restaurante Bat VIP Business Class",
+        "kind": "amenity:restaurant",
+        "utm33s": {
+          "easting": 305046.94,
+          "northing": 9022859.84,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.227377,
+          -8.8356016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_8881106632",
+      "properties": {
+        "id": "pub_node_8881106632",
+        "osmNodeId": 8881106632,
+        "name": "Cantinho do Cabenda",
+        "kind": "amenity:restaurant",
+        "utm33s": {
+          "easting": 304855.09,
+          "northing": 9023203.54,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2256481,
+          -8.8324861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_10069052425",
+      "properties": {
+        "id": "pub_node_10069052425",
+        "osmNodeId": 10069052425,
+        "name": "Zap - Prenda",
+        "kind": "amenity:payment_centre",
+        "utm33s": {
+          "easting": 304490.33,
+          "northing": 9023233.54,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2223339,
+          -8.8321991
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "pub_node_12857803512",
+      "properties": {
+        "id": "pub_node_12857803512",
+        "osmNodeId": 12857803512,
+        "name": "Escola Virgem Milagrosa",
+        "kind": "amenity:school",
+        "utm33s": {
+          "easting": 304946.03,
+          "northing": 9022505.41,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        },
+        "source": "OpenStreetMap"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2264445,
+          -8.8388016
+        ]
+      }
+    }
+  ]
+}

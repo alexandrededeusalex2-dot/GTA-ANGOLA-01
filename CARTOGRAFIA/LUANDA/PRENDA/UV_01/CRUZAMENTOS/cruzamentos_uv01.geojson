@@ -1,0 +1,597 @@
+{
+  "type": "FeatureCollection",
+  "name": "PRENDA_UV01_CRUZAMENTOS",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+  },
+  "metadata": {
+    "metricCrs": "EPSG:32733",
+    "totalNodes": 20
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "cruz_osm_748850326",
+      "properties": {
+        "id": "cruz_osm_748850326",
+        "osmNodeId": 748850326,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V5",
+          "V4"
+        ],
+        "connectedStreets": [
+          "Ruados Funantes",
+          "Rua Frederico Santos"
+        ],
+        "utm33s": {
+          "easting": 304670.64,
+          "northing": 9022586.85,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2239448,
+          -8.8380535
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_750459528",
+      "properties": {
+        "id": "cruz_osm_750459528",
+        "osmNodeId": 750459528,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V5",
+          "V4"
+        ],
+        "connectedStreets": [
+          "Rua Eng Francisco Sande Lemos"
+        ],
+        "utm33s": {
+          "easting": 304564.22,
+          "northing": 9022840.68,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2229885,
+          -8.8357541
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_750459891",
+      "properties": {
+        "id": "cruz_osm_750459891",
+        "osmNodeId": 750459891,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V6",
+          "V4",
+          "V5"
+        ],
+        "connectedStreets": [
+          "Rua Eng Francisco Sande Lemos"
+        ],
+        "utm33s": {
+          "easting": 304437.75,
+          "northing": 9022638.05,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2218302,
+          -8.8375806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_750460021",
+      "properties": {
+        "id": "cruz_osm_750460021",
+        "osmNodeId": 750460021,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V6"
+        ],
+        "connectedStreets": [],
+        "utm33s": {
+          "easting": 304496.8,
+          "northing": 9022631.16,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2223666,
+          -8.8376454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_779113819",
+      "properties": {
+        "id": "cruz_osm_779113819",
+        "osmNodeId": 779113819,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V6"
+        ],
+        "connectedStreets": [],
+        "utm33s": {
+          "easting": 304760.02,
+          "northing": 9023136.2,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.224781,
+          -8.8330908
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_441779861",
+      "properties": {
+        "id": "cruz_osm_441779861",
+        "osmNodeId": 441779861,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V5",
+          "V4"
+        ],
+        "connectedStreets": [
+          "Ruados Funantes",
+          "Rua Eng Francisco Sande Lemos"
+        ],
+        "utm33s": {
+          "easting": 304678.82,
+          "northing": 9022785.92,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2240278,
+          -8.8362541
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_1640703547",
+      "properties": {
+        "id": "cruz_osm_1640703547",
+        "osmNodeId": 1640703547,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V4",
+          "V3"
+        ],
+        "connectedStreets": [
+          "Ruados Funantes",
+          "Rua Comandante Arguelles"
+        ],
+        "utm33s": {
+          "easting": 304754.74,
+          "northing": 9023107.36,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2247318,
+          -8.8333513
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_1769552341",
+      "properties": {
+        "id": "cruz_osm_1769552341",
+        "osmNodeId": 1769552341,
+        "kind": "cruzamento",
+        "degree": 4,
+        "tiers7V": [
+          "V4"
+        ],
+        "connectedStreets": [
+          "Rua dos Mareantes",
+          "Rua dos Sertanejos"
+        ],
+        "utm33s": {
+          "easting": 304522.32,
+          "northing": 9023153.18,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2226212,
+          -8.832927
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_2334333450",
+      "properties": {
+        "id": "cruz_osm_2334333450",
+        "osmNodeId": 2334333450,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V3",
+          "V5"
+        ],
+        "connectedStreets": [
+          "Avenida Revolução de Outubro"
+        ],
+        "utm33s": {
+          "easting": 304911.03,
+          "northing": 9023105.45,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2261523,
+          -8.8333753
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_1640655970",
+      "properties": {
+        "id": "cruz_osm_1640655970",
+        "osmNodeId": 1640655970,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V3"
+        ],
+        "connectedStreets": [
+          "Avenida Revolução de Outubro",
+          "Rua Comandante Arguelles"
+        ],
+        "utm33s": {
+          "easting": 304880.69,
+          "northing": 9023131.74,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2258777,
+          -8.8331363
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_6034695624",
+      "properties": {
+        "id": "cruz_osm_6034695624",
+        "osmNodeId": 6034695624,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V3"
+        ],
+        "connectedStreets": [
+          "Avenida Revolução de Outubro"
+        ],
+        "utm33s": {
+          "easting": 304991.84,
+          "northing": 9022961.08,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2268806,
+          -8.834684
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_5916510664",
+      "properties": {
+        "id": "cruz_osm_5916510664",
+        "osmNodeId": 5916510664,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V3"
+        ],
+        "connectedStreets": [
+          "Avenida Revolução de Outubro"
+        ],
+        "utm33s": {
+          "easting": 304974.39,
+          "northing": 9022985.18,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.226723,
+          -8.8344653
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_4563745207",
+      "properties": {
+        "id": "cruz_osm_4563745207",
+        "osmNodeId": 4563745207,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V3"
+        ],
+        "connectedStreets": [
+          "Rua Comandante Arguelles"
+        ],
+        "utm33s": {
+          "easting": 304922.62,
+          "northing": 9022977.7,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2262521,
+          -8.8345307
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_1640655904",
+      "properties": {
+        "id": "cruz_osm_1640655904",
+        "osmNodeId": 1640655904,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V3"
+        ],
+        "connectedStreets": [
+          "Avenida Revolução de Outubro"
+        ],
+        "utm33s": {
+          "easting": 304931.86,
+          "northing": 9023055.41,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2263395,
+          -8.8338286
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_1640655876",
+      "properties": {
+        "id": "cruz_osm_1640655876",
+        "osmNodeId": 1640655876,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V3"
+        ],
+        "connectedStreets": [
+          "Rua Comandante Arguelles"
+        ],
+        "utm33s": {
+          "easting": 304817.69,
+          "northing": 9023081.32,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2253028,
+          -8.8335894
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_4563745193",
+      "properties": {
+        "id": "cruz_osm_4563745193",
+        "osmNodeId": 4563745193,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V3"
+        ],
+        "connectedStreets": [],
+        "utm33s": {
+          "easting": 304994.76,
+          "northing": 9022930.29,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2269058,
+          -8.8349625
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_2334333568",
+      "properties": {
+        "id": "cruz_osm_2334333568",
+        "osmNodeId": 2334333568,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V5"
+        ],
+        "connectedStreets": [],
+        "utm33s": {
+          "easting": 304979.9,
+          "northing": 9023094.12,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2267778,
+          -8.8334807
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_2334333683",
+      "properties": {
+        "id": "cruz_osm_2334333683",
+        "osmNodeId": 2334333683,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V5"
+        ],
+        "connectedStreets": [],
+        "utm33s": {
+          "easting": 305011.91,
+          "northing": 9023139.91,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2270707,
+          -8.8330681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_2493626988",
+      "properties": {
+        "id": "cruz_osm_2493626988",
+        "osmNodeId": 2493626988,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V5",
+          "V3"
+        ],
+        "connectedStreets": [
+          "Avenida Revolução de Outubro"
+        ],
+        "utm33s": {
+          "easting": 304862.23,
+          "northing": 9023227.66,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.225714,
+          -8.8322683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "cruz_osm_779114392",
+      "properties": {
+        "id": "cruz_osm_779114392",
+        "osmNodeId": 779114392,
+        "kind": "cruzamento",
+        "degree": 3,
+        "tiers7V": [
+          "V6"
+        ],
+        "connectedStreets": [],
+        "utm33s": {
+          "easting": 304672.5,
+          "northing": 9023176.05,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2239872,
+          -8.8327267
+        ]
+      }
+    }
+  ]
+}

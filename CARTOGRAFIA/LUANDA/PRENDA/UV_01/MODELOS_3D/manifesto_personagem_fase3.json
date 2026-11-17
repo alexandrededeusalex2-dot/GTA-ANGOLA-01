@@ -1,0 +1,37 @@
+{
+  "phase": "Fase 3 — Personagem Principal",
+  "protagonist": {
+    "id": "protagonist-prenda-01",
+    "localGlbPath": "/assets/models/characters/prenda_protagonist.glb",
+    "localAnimationsPath": "/assets/animations/prenda_locomotion.json",
+    "sourceModel": {
+      "repository": "https://github.com/c-frame/valid-avatars-glb",
+      "assetName": "Black_M_3_Casual.glb",
+      "authors": "VALID (Validated Avatar Library for Inclusion and Diversity) — University of Central Florida & Google",
+      "license": "MIT License (Copyright 2022 Tiffany Do)",
+      "geometry": {
+        "meshes": [
+          "H_DDS_HighRes (corpo, rosto, cabelo, mãos com dedos individualizados, calças jeans, polo e calçado)",
+          "h_L_eye",
+          "h_R_eye",
+          "h_L_gland",
+          "h_R_gland",
+          "h_TeethUp",
+          "h_TeethDown"
+        ],
+        "triangles": 58724,
+        "bones": 84,
+        "heightMeters": 1.822,
+        "compression": "EXT_meshopt_compression + embedded WebP textures"
+      }
+    },
+    "sourceAnimations": {
+      "idle": "Animação procedural de repouso civil natural (respiração, postura relaxada, mãos soltas junto às ancas)",
+      "walk_and_run": {
+        "repository": "https://github.com/mrdoob/three.js/blob/dev/examples/models/gltf/Soldier.glb",
+        "origin": "Mixamo humanoid locomotion clips retargeted with world-space bone rest offsets and sole-grounding calibration",
+        "license": "Three.js MIT Repository / Mixamo Royalty-Free Example Asset"
+      }
+    }
+  }
+}

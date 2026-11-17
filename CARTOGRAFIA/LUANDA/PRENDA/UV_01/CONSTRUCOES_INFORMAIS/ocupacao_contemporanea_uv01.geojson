@@ -1,0 +1,615 @@
+{
+  "type": "FeatureCollection",
+  "name": "PRENDA_UV01_OCUPACAO_CONTEMPORANEA",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::4326"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "contemp_node_5166587332",
+      "properties": {
+        "id": "contemp_node_5166587332",
+        "osmNodeId": 5166587332,
+        "name": "Arreiou",
+        "kind": "shop:convenience",
+        "street": "Avenida Revolução de Outubro (Ex Avenida de Lisboa)",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305046.42,
+          "northing": 9022916.88,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2273748,
+          -8.8350859
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_5166587338",
+      "properties": {
+        "id": "contemp_node_5166587338",
+        "osmNodeId": 5166587338,
+        "name": "Trading Constroi - Materiais de Construção",
+        "kind": "shop:doityourself",
+        "street": "Avenida Revolução de Outubro (Ex Avenida de Lisboa)",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305024.8,
+          "northing": 9022970.42,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2271806,
+          -8.8346009
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_5166587339",
+      "properties": {
+        "id": "contemp_node_5166587339",
+        "osmNodeId": 5166587339,
+        "name": "ElectroPanga",
+        "kind": "shop:electronics",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 304994.92,
+          "northing": 9022985.58,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2269096,
+          -8.8344626
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_5166587340",
+      "properties": {
+        "id": "contemp_node_5166587340",
+        "osmNodeId": 5166587340,
+        "name": "Neuce",
+        "kind": "shop:paint",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 304989.37,
+          "northing": 9022988.35,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2268593,
+          -8.8344373
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_5171684460",
+      "properties": {
+        "id": "contemp_node_5171684460",
+        "osmNodeId": 5171684460,
+        "name": "clothes",
+        "kind": "shop:clothes",
+        "street": "Rua Padre Manuel Ruela Pombo",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305027.59,
+          "northing": 9022936.35,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2272045,
+          -8.8349091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_5171684564",
+      "properties": {
+        "id": "contemp_node_5171684564",
+        "osmNodeId": 5171684564,
+        "name": "Best Whisky",
+        "kind": "shop:alcohol",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305067.32,
+          "northing": 9022840,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2275614,
+          -8.8357819
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_5171684565",
+      "properties": {
+        "id": "contemp_node_5171684565",
+        "osmNodeId": 5171684565,
+        "name": "yes",
+        "kind": "shop:yes",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305062.19,
+          "northing": 9022844.7,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.227515,
+          -8.8357392
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_5171684567",
+      "properties": {
+        "id": "contemp_node_5171684567",
+        "osmNodeId": 5171684567,
+        "name": "Loriana Monaliza - Salão de Beleza e Barbearia",
+        "kind": "shop:hairdresser",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305039.36,
+          "northing": 9022864.23,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2273083,
+          -8.8355616
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_5171684569",
+      "properties": {
+        "id": "contemp_node_5171684569",
+        "osmNodeId": 5171684569,
+        "name": "Big Print - Casa de Publicidade",
+        "kind": "shop:copyshop",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305033.2,
+          "northing": 9022869.72,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2272526,
+          -8.8355117
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_5171684572",
+      "properties": {
+        "id": "contemp_node_5171684572",
+        "osmNodeId": 5171684572,
+        "name": "Salão de Beleza Bladine",
+        "kind": "shop:hairdresser",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305020.49,
+          "northing": 9022882.81,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2271376,
+          -8.8353928
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_5171684573",
+      "properties": {
+        "id": "contemp_node_5171684573",
+        "osmNodeId": 5171684573,
+        "name": "clothes",
+        "kind": "shop:clothes",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305016.67,
+          "northing": 9022888.69,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2271031,
+          -8.8353395
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_5171684576",
+      "properties": {
+        "id": "contemp_node_5171684576",
+        "osmNodeId": 5171684576,
+        "name": "postiço",
+        "kind": "shop:yes",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305002.17,
+          "northing": 9022906.71,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2269721,
+          -8.835176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_5171684577",
+      "properties": {
+        "id": "contemp_node_5171684577",
+        "osmNodeId": 5171684577,
+        "name": "clothes",
+        "kind": "shop:clothes",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305014.3,
+          "northing": 9022892.45,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2270818,
+          -8.8353054
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_5171684578",
+      "properties": {
+        "id": "contemp_node_5171684578",
+        "osmNodeId": 5171684578,
+        "name": "Salão de Beleza e Barbearia",
+        "kind": "shop:hairdresser",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 304993.64,
+          "northing": 9022918.27,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2268951,
+          -8.8350711
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_5171684580",
+      "properties": {
+        "id": "contemp_node_5171684580",
+        "osmNodeId": 5171684580,
+        "name": "Vandre Comercial (Fotocópia, Fotografia, Cópia de Chaves, Timbre de Camisola)",
+        "kind": "shop:copyshop",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 304985.52,
+          "northing": 9022927.71,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2268217,
+          -8.8349854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_8881067442",
+      "properties": {
+        "id": "contemp_node_8881067442",
+        "osmNodeId": 8881067442,
+        "name": "convenience",
+        "kind": "shop:convenience",
+        "street": "",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 304851.9,
+          "northing": 9023217.33,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2256197,
+          -8.8323612
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_8881095214",
+      "properties": {
+        "id": "contemp_node_8881095214",
+        "osmNodeId": 8881095214,
+        "name": "Alfaiataria e Boutique",
+        "kind": "shop:tailor",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305058.71,
+          "northing": 9022848.63,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2274835,
+          -8.8357035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_8881114687",
+      "properties": {
+        "id": "contemp_node_8881114687",
+        "osmNodeId": 8881114687,
+        "name": "Casa Popular do Prenda",
+        "kind": "shop:stationery",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305050.34,
+          "northing": 9022855.67,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2274078,
+          -8.8356395
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_8881134476",
+      "properties": {
+        "id": "contemp_node_8881134476",
+        "osmNodeId": 8881134476,
+        "name": "Ango Shop",
+        "kind": "shop:houseware",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305056.99,
+          "northing": 9022850.16,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.227468,
+          -8.8356896
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_8881136296",
+      "properties": {
+        "id": "contemp_node_8881136296",
+        "osmNodeId": 8881136296,
+        "name": "Chamuçaria",
+        "kind": "shop:yes",
+        "street": "Avenida Revolução de Outubro",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 305064.88,
+          "northing": 9022842.21,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2275393,
+          -8.8357618
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "contemp_node_9901909181",
+      "properties": {
+        "id": "contemp_node_9901909181",
+        "osmNodeId": 9901909181,
+        "name": "Livina Lavandaria",
+        "kind": "shop:laundry",
+        "street": "",
+        "sourceType": "osm-verified",
+        "utm33s": {
+          "easting": 304858.41,
+          "northing": 9023041.37,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.2256712,
+          -8.8339523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zona_mercado_prenda",
+      "properties": {
+        "id": "zona_mercado_prenda",
+        "name": "Mercado e Comércio de Rua (Área OSM Marketplace)",
+        "lon": 13.22688,
+        "lat": -8.83605,
+        "kind": "street-commerce-zone",
+        "sourceType": "osm-marketplace-context",
+        "note": "Bancas e toldos de comércio de rua associados ao polígono amenity=marketplace do OpenStreetMap.",
+        "utm33s": {
+          "easting": 304992.49,
+          "northing": 9022809.99,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.22688,
+          -8.83605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zona_pilotis_lotes_norte",
+      "properties": {
+        "id": "zona_pilotis_lotes_norte",
+        "name": "Ocupação Térrea dos Pilotis (Eixo Lotes 1–4)",
+        "lon": 13.22335,
+        "lat": -8.83555,
+        "kind": "ground-floor-adaptation-zone",
+        "sourceType": "documented-contemporary-pattern",
+        "note": "Adaptação contemporânea documentada dos pisos térreos sobre pilotis com cantinas e pequenos comércios de proximidade (sem inventar números de porta).",
+        "utm33s": {
+          "easting": 304603.88,
+          "northing": 9022863.44,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.22335,
+          -8.83555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "zona_corredor_sande_lemos",
+      "properties": {
+        "id": "zona_corredor_sande_lemos",
+        "name": "Corredor Comercial V4 — Rua Eng. Francisco Sande Lemos",
+        "lon": 13.22295,
+        "lat": -8.83655,
+        "kind": "v4-commerce-strip",
+        "sourceType": "documented-contemporary-pattern",
+        "note": "Pequenos estabelecimentos e quiosques de rua ao longo do eixo coletor V4.",
+        "utm33s": {
+          "easting": 304560.4,
+          "northing": 9022752.63,
+          "zone": "33S",
+          "epsg": "EPSG:32733"
+        }
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.22295,
+          -8.83655
+        ]
+      }
+    }
+  ]
+}
