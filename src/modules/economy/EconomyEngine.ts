@@ -65,6 +65,36 @@ export class EconomyEngine implements EngineModule {
     return this.balanceAoa;
   }
 
+  spendKwanza(amountAoa: number, reason: string): boolean {
+    const cleanAmount = Math.round(amountAoa);
+    if (!Number.isFinite(cleanAmount) || cleanAmount <= 0) return false;
+    if (this.balanceAoa < cleanAmount) return false;
+    this.balanceAoa -= cleanAmount;
+    this.ledger.push({
+      id: `tx_${this.ledger.length + 1}`,
+      timestampIso: new Date().toISOString(),
+      amountAoa: -cleanAmount,
+      reason,
+    });
+    this.syncDomAttributes();
+    return true;
+  }
+
+  deductKwanza(amountAoa: number, reason: string): number {
+    const cleanAmount = Math.round(amountAoa);
+    if (!Number.isFinite(cleanAmount) || cleanAmount <= 0) return this.balanceAoa;
+    const deducted = Math.min(this.balanceAoa, cleanAmount);
+    this.balanceAoa = Math.max(0, this.balanceAoa - cleanAmount);
+    this.ledger.push({
+      id: `tx_${this.ledger.length + 1}`,
+      timestampIso: new Date().toISOString(),
+      amountAoa: -deducted,
+      reason,
+    });
+    this.syncDomAttributes();
+    return this.balanceAoa;
+  }
+
   getLedger(): readonly EconomyTransaction[] {
     return this.ledger;
   }

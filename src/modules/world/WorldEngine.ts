@@ -38,8 +38,15 @@ import {
 } from './PrendaUrbanPropsBuilder';
 import { SectorManager } from './SectorManager';
 import {
+  createInitialDayNightState,
+  presetToGameHour,
+  RainParticleSystem,
+  sampleLuandaAtmosphere,
+  stepDayNightWeather,
+  type DayNightWeatherState,
+} from './DayNightWeather';
+import {
   groundHeightAt,
-  LUANDA_TIME_PRESETS,
   PRENDA_UV1_PUBLISHED_DMS,
 } from './luandaCoordinates';
 
@@ -101,6 +108,10 @@ export class WorldEngine implements EngineModule {
   private sunDir = new THREE.Vector3(0.7, 0.5, 0.5).normalize();
 
   private currentTimeOfDay: TimeOfDayPreset = 'morning';
+  private dayNightState: DayNightWeatherState = createInitialDayNightState();
+  private rainSystem: RainParticleSystem | null = null;
+  private streetPointLights: THREE.PointLight[] = [];
+  private lastFocusPos: Vector3Like = { x: -4, y: 0, z: 12 };
   private dataset: PrendaCartographyDataset | null = null;
   private materialPack: PrendaPbrMaterialPack | null = null;
   private buildingsBuild: PrendaBuildingsBuildResult | null = null;
@@ -149,12 +160,27 @@ export class WorldEngine implements EngineModule {
       INITIAL_WORLD_TARGET.chunkSizeMeters,
     );
 
+    this.setupStreetPointLights();
+    this.rainSystem = new RainParticleSystem();
+    this.scene.add(this.rainSystem.points);
+
     this.applyTimeOfDay(this.currentTimeOfDay);
     this.nearestStreetLabel = findNearestStreetLabel(0, 0, this.dataset.roads);
 
     this.unsubTime = this.eventBus.on('world:timeChanged', ({ preset }) => {
       this.applyTimeOfDay(preset);
     });
+  }
+
+  private setupStreetPointLights(): void {
+    // 3 pooled unshadowed warm sodium lights snapped to closest streetlights when night falls
+    for (let i = 0; i < 3; i++) {
+      const light = new THREE.PointLight(0xffcb78, 0, 28, 1.7);
+      light.castShadow = false;
+      light.visible = false;
+      this.scene.add(light);
+      this.streetPointLights.push(light);
+    }
   }
 
   /**
@@ -204,27 +230,110 @@ export class WorldEngine implements EngineModule {
 
   applyTimeOfDay(preset: TimeOfDayPreset): void {
     this.currentTimeOfDay = preset;
-    const cfg = LUANDA_TIME_PRESETS[preset];
+    const presetHour = presetToGameHour(preset);
+    this.dayNightState = {
+      ...createInitialDayNightState(presetHour),
+      speedMultiplier: this.dayNightState.speedMultiplier,
+      isRaining: this.dayNightState.isRaining,
+      rainCooldownSec: this.dayNightState.rainCooldownSec,
+      rainRemainingSec: this.dayNightState.rainRemainingSec,
+      npcSpeedMultiplier: this.dayNightState.npcSpeedMultiplier,
+    };
+    this.applyAtmosphereFromClock();
+  }
 
-    const phi = THREE.MathUtils.degToRad(90 - cfg.elevationDeg);
-    const theta = THREE.MathUtils.degToRad(cfg.azimuthDeg);
+  cycleTimeSpeedMultiplier(): 1 | 20 | 120 {
+    const next: 1 | 20 | 120 =
+      this.dayNightState.speedMultiplier === 1
+        ? 20
+        : this.dayNightState.speedMultiplier === 20
+          ? 120
+          : 1;
+    this.dayNightState = { ...this.dayNightState, speedMultiplier: next };
+    return next;
+  }
+
+  toggleRainForPreview(): boolean {
+    const nextRaining = !this.dayNightState.isRaining;
+    this.dayNightState = {
+      ...this.dayNightState,
+      isRaining: nextRaining,
+      rainRemainingSec: nextRaining ? 42 : 0,
+      npcSpeedMultiplier: nextRaining ? 1.45 : 1.0,
+    };
+    this.applyAtmosphereFromClock();
+    return nextRaining;
+  }
+
+  getDayNightState(): DayNightWeatherState {
+    return this.dayNightState;
+  }
+
+  private applyAtmosphereFromClock(): void {
+    const sample = sampleLuandaAtmosphere(
+      this.dayNightState.gameHour,
+      this.dayNightState.isRaining,
+    );
+    this.currentTimeOfDay = this.dayNightState.presetBucket;
+
+    const phi = THREE.MathUtils.degToRad(90 - sample.elevationDeg);
+    const theta = THREE.MathUtils.degToRad(sample.azimuthDeg);
     this.sunDir.setFromSphericalCoords(1, phi, theta).normalize();
 
     if (this.sky) {
       this.sky.material.uniforms.sunPosition.value.copy(this.sunDir);
+      this.sky.material.uniforms.turbidity.value = this.dayNightState.isRaining ? 11.5 : 6.2;
+      this.sky.material.uniforms.rayleigh.value = sample.isNight ? 0.35 : 2.0;
     }
     if (this.sunLight) {
       const target = this.sunLight.target.position;
       this.sunLight.position.copy(target).addScaledVector(this.sunDir, 150);
-      this.sunLight.color.setHex(cfg.keyLightColorHex);
-      this.sunLight.intensity = cfg.keyLightIntensity;
+      this.sunLight.color.setHex(sample.sunColorHex);
+      this.sunLight.intensity = sample.sunIntensity;
     }
     if (this.hemiLight) {
-      this.hemiLight.color.setHex(cfg.hemisphereSkyHex);
-      this.hemiLight.groundColor.setHex(cfg.hemisphereGroundHex);
+      this.hemiLight.color.setHex(sample.hemiSkyHex);
+      this.hemiLight.groundColor.setHex(sample.hemiGroundHex);
+      this.hemiLight.intensity = sample.hemiIntensity;
     }
     if (this.scene.fog instanceof THREE.FogExp2) {
-      this.scene.fog.color.setHex(cfg.fogColorHex);
+      this.scene.fog.color.setHex(sample.fogColorHex);
+    }
+
+    if (this.propsBuild?.lampMaterial) {
+      this.propsBuild.lampMaterial.emissiveIntensity = sample.lampEmissiveIntensity;
+    }
+
+    const lightsOn = sample.streetlightsOn;
+    const poles = this.propsBuild?.streetlightPositions ?? [];
+    if (lightsOn && poles.length > 0) {
+      const nearest = [...poles]
+        .map((p) => ({
+          p,
+          dSq: (p.x - this.lastFocusPos.x) ** 2 + (p.z - this.lastFocusPos.z) ** 2,
+        }))
+        .sort((a, b) => a.dSq - b.dSq);
+      this.streetPointLights.forEach((light, idx) => {
+        const entry = nearest[idx];
+        if (entry) {
+          light.position.set(entry.p.x, entry.p.y, entry.p.z);
+          light.intensity = 14;
+          light.visible = true;
+        } else {
+          light.visible = false;
+        }
+      });
+    } else {
+      for (const light of this.streetPointLights) {
+        light.visible = false;
+        light.intensity = 0;
+      }
+    }
+
+    if (typeof document !== 'undefined' && document.body) {
+      document.body.dataset.gameClock = this.dayNightState.clockLabel;
+      document.body.dataset.streetlightsOn = lightsOn ? 'true' : 'false';
+      document.body.dataset.isRaining = this.dayNightState.isRaining ? 'true' : 'false';
     }
   }
 
@@ -303,6 +412,7 @@ export class WorldEngine implements EngineModule {
   }
 
   updateFocusPosition(pos: Vector3Like): string {
+    this.lastFocusPos = pos;
     const chunkKey = this.sectorManager?.updateFocus(pos) ?? 'chunk_0_0';
 
     if (this.dataset) {
@@ -339,12 +449,20 @@ export class WorldEngine implements EngineModule {
     };
   }
 
-  update(_dt: number): void {
-    // Phase 2 urban stage updates are driven by focus updates and sector visibility.
+  update(dt: number): void {
+    this.dayNightState = stepDayNightWeather(this.dayNightState, dt);
+    this.applyAtmosphereFromClock();
+    this.rainSystem?.update(dt, this.dayNightState.isRaining, this.lastFocusPos);
   }
 
   dispose(): void {
     this.unsubTime?.();
+    this.rainSystem?.dispose();
+    this.rainSystem = null;
+    for (const l of this.streetPointLights) {
+      l.removeFromParent();
+    }
+    this.streetPointLights = [];
     this.assetManager.disposeObject3D(this.worldStageRoot);
     this.materialLibrary.dispose();
     if (this.sky) {

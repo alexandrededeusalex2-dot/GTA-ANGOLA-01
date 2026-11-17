@@ -4,6 +4,7 @@
  */
 
 import * as THREE from 'three';
+import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import type { PrendaPbrMaterialPack } from '../../resources/PrendaTextures';
 import type {
   LocalPoint2D,
@@ -171,11 +172,39 @@ export function buildPrendaBuildings(
   const groundKioskMatrices: MatrixRecord[] = [];
   const groundAwningMatrices: MatrixRecord[] = [];
 
+  const batchedPlinths: { historical: THREE.BufferGeometry[]; contemporary: THREE.BufferGeometry[] } = {
+    historical: [],
+    contemporary: [],
+  };
+  const batchedCobogo: { historical: THREE.BufferGeometry[]; contemporary: THREE.BufferGeometry[] } = {
+    historical: [],
+    contemporary: [],
+  };
+  const batchedRoofs: { historical: THREE.BufferGeometry[]; contemporary: THREE.BufferGeometry[] } = {
+    historical: [],
+    contemporary: [],
+  };
+
+  const pushTranslatedGeom = (
+    bucket: THREE.BufferGeometry[],
+    geom: THREE.BufferGeometry,
+    tx: number,
+    ty: number,
+    tz: number,
+    rotY = 0,
+  ) => {
+    const g = geom.index ? geom.toNonIndexed() : geom;
+    if (g !== geom) geom.dispose();
+    if (rotY !== 0) g.rotateY(rotY);
+    g.translate(tx, ty, tz);
+    bucket.push(g);
+  };
+
   dataset.buildings.forEach((b, idx) => {
     buildingMap.set(b.id, b);
 
-    const targetGroup =
-      b.era === 'historical-1965-adapted' ? historicalGroup : contemporaryAdaptationsGroup;
+    const eraKey = b.era === 'historical-1965-adapted' ? 'historical' : 'contemporary';
+    const targetGroup = eraKey === 'historical' ? historicalGroup : contemporaryAdaptationsGroup;
 
     const buildingGroup = new THREE.Group();
     buildingGroup.name = `Building_${b.id}`;
@@ -185,17 +214,12 @@ export function buildPrendaBuildings(
     const pilotisHeight = b.hasPilotis ? 3.55 : 0;
     const upperHeight = Math.max(3.2, b.roofHeightMeters - pilotisHeight);
 
-    // 1. Foundation concrete plinth anchored below terrain (-0.6m) so nothing ever floats
+    // 1. Foundation concrete plinth anchored below terrain (-0.6m) - batched per era
     const plinthGeom = createExtrudedPrism(outerShape, 0.85, 1);
-    const plinthMesh = new THREE.Mesh(plinthGeom, materials.structuralConcrete);
-    plinthMesh.position.y = -0.6;
-    plinthMesh.receiveShadow = true;
-    buildingGroup.add(plinthMesh);
+    pushTranslatedGeom(batchedPlinths[eraKey], plinthGeom, b.obb.centerX, b.baseElevation - 0.6, b.obb.centerZ);
 
     // 2. Main Architectural Volume (elevated on pilotis for the 22 modernist blocks)
-    const bodyShape = b.hasPilotis
-      ? outerShape
-      : outerShape;
+    const bodyShape = outerShape;
     const bodyGeom = createExtrudedPrism(bodyShape, upperHeight, 2.95);
     const facadeMat = pickBlockFacadeMaterial(b, materials, idx);
     const bodyMesh = new THREE.Mesh(bodyGeom, facadeMat);
@@ -210,35 +234,35 @@ export function buildPrendaBuildings(
     if (b.hasPilotis) {
       const coreShape = buildFootprintShape(b.localPolygon, b.obb.centerX, b.obb.centerZ, 0.54);
       const coreGeom = createExtrudedPrism(coreShape, pilotisHeight + 0.3, 2.95);
-      const coreMesh = new THREE.Mesh(coreGeom, materials.cobogoCore);
-      coreMesh.position.y = 0.05;
-      coreMesh.castShadow = true;
-      coreMesh.receiveShadow = true;
-      buildingGroup.add(coreMesh);
+      pushTranslatedGeom(batchedCobogo[eraKey], coreGeom, b.obb.centerX, b.baseElevation + 0.05, b.obb.centerZ);
 
       // Projecting stairwell / elevator core tower with perforated cobogó screen
       const stairW = Math.min(4.6, b.obb.width * 0.34);
       const stairD = Math.min(5.2, b.obb.length * 0.14);
       const stairH = b.roofHeightMeters + 2.4;
       const stairGeom = new THREE.BoxGeometry(stairD, stairH, stairW);
-      const stairMesh = new THREE.Mesh(stairGeom, materials.cobogoCore);
       const cosA = Math.cos(b.obb.angleRad);
       const sinA = Math.sin(b.obb.angleRad);
       const stairOffsetV = b.obb.width * 0.44;
-      stairMesh.position.set(-stairOffsetV * sinA, stairH * 0.5, stairOffsetV * cosA);
-      stairMesh.rotation.y = -b.obb.angleRad;
-      stairMesh.castShadow = true;
-      stairMesh.receiveShadow = true;
-      buildingGroup.add(stairMesh);
+      pushTranslatedGeom(
+        batchedCobogo[eraKey],
+        stairGeom,
+        b.obb.centerX - stairOffsetV * sinA,
+        b.baseElevation + stairH * 0.5,
+        b.obb.centerZ + stairOffsetV * cosA,
+        -b.obb.angleRad,
+      );
 
       // Cantilevered roof overhang slab + parapet
       const roofShape = buildFootprintShape(b.localPolygon, b.obb.centerX, b.obb.centerZ, 1.035);
       const roofGeom = createExtrudedPrism(roofShape, 0.55, 1);
-      const roofMesh = new THREE.Mesh(roofGeom, materials.roofDeck);
-      roofMesh.position.y = pilotisHeight + upperHeight + 0.12;
-      roofMesh.castShadow = true;
-      roofMesh.receiveShadow = true;
-      buildingGroup.add(roofMesh);
+      pushTranslatedGeom(
+        batchedRoofs[eraKey],
+        roofGeom,
+        b.obb.centerX,
+        b.baseElevation + pilotisHeight + upperHeight + 0.12,
+        b.obb.centerZ,
+      );
 
       // Collect instanced pilotis columns along both long facades
       const halfL = b.obb.length * 0.44;
@@ -347,15 +371,48 @@ export function buildPrendaBuildings(
       canopy.castShadow = true;
       buildingGroup.add(canopy);
     } else {
-      // Standard civic/contemporary roof cornice
+      // Standard civic/contemporary roof cornice (batched per era)
       const roofShape = buildFootprintShape(b.localPolygon, b.obb.centerX, b.obb.centerZ, 1.03);
-      const roofMesh = new THREE.Mesh(createExtrudedPrism(roofShape, 0.45, 1), materials.roofDeck);
-      roofMesh.position.y = upperHeight + 0.1;
-      buildingGroup.add(roofMesh);
+      const roofGeom = createExtrudedPrism(roofShape, 0.45, 1);
+      pushTranslatedGeom(batchedRoofs[eraKey], roofGeom, b.obb.centerX, b.baseElevation + upperHeight + 0.1, b.obb.centerZ);
     }
 
     targetGroup.add(buildingGroup);
   });
+
+  // Mount batched plinths, cobogo cores/stairs, and roofs per era
+  for (const eraKey of ['historical', 'contemporary'] as const) {
+    const parent = eraKey === 'historical' ? historicalGroup : contemporaryAdaptationsGroup;
+    if (batchedPlinths[eraKey].length > 0) {
+      const merged = mergeGeometries(batchedPlinths[eraKey], false);
+      for (const g of batchedPlinths[eraKey]) g.dispose();
+      if (merged) {
+        const m = new THREE.Mesh(merged, materials.structuralConcrete);
+        m.receiveShadow = true;
+        parent.add(m);
+      }
+    }
+    if (batchedCobogo[eraKey].length > 0) {
+      const merged = mergeGeometries(batchedCobogo[eraKey], false);
+      for (const g of batchedCobogo[eraKey]) g.dispose();
+      if (merged) {
+        const m = new THREE.Mesh(merged, materials.cobogoCore);
+        m.castShadow = true;
+        m.receiveShadow = true;
+        parent.add(m);
+      }
+    }
+    if (batchedRoofs[eraKey].length > 0) {
+      const merged = mergeGeometries(batchedRoofs[eraKey], false);
+      for (const g of batchedRoofs[eraKey]) g.dispose();
+      if (merged) {
+        const m = new THREE.Mesh(merged, materials.roofDeck);
+        m.castShadow = true;
+        m.receiveShadow = true;
+        parent.add(m);
+      }
+    }
+  }
 
   // Add batched InstancedMeshes to keep draw calls well within Android budgets
   const pilotisInst = createInstancedBoxes(

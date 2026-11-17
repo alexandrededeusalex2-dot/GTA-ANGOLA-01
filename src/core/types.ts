@@ -7,7 +7,7 @@ export type GameState = 'title' | 'playing' | 'paused' | 'gameover';
 
 export type QualityTier = 'low' | 'medium' | 'high';
 
-export type TimeOfDayPreset = 'morning' | 'noon' | 'sunset';
+export type TimeOfDayPreset = 'morning' | 'noon' | 'sunset' | 'night';
 
 export type ExplorerCameraMode = 'third-person' | 'free-inspect';
 

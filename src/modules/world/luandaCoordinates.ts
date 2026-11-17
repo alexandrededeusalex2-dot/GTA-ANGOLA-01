@@ -108,6 +108,16 @@ export const LUANDA_TIME_PRESETS: Record<TimeOfDayPreset, SunOrientation> = {
     hemisphereSkyHex: 0xb07c87,
     hemisphereGroundHex: 0x3b2920,
   },
+  night: {
+    elevationDeg: -6,
+    azimuthDeg: 315,
+    keyLightColorHex: 0x6e8ac4,
+    keyLightIntensity: 0.42,
+    skyColorHex: 0x09101f,
+    fogColorHex: 0x0c1424,
+    hemisphereSkyHex: 0x1c2b4a,
+    hemisphereGroundHex: 0x111520,
+  },
 };
 
 /**

@@ -38,7 +38,7 @@ export function sanitizeSaveProfile(raw: unknown): SaveProfileData {
 
   const candidate = raw as Partial<SaveProfileData>;
   const validTiers: QualityTier[] = ['low', 'medium', 'high'];
-  const validTimes: TimeOfDayPreset[] = ['morning', 'noon', 'sunset'];
+  const validTimes: TimeOfDayPreset[] = ['morning', 'noon', 'sunset', 'night'];
 
   const isVec3 = (v: unknown): v is { x: number; y: number; z: number } =>
     Boolean(

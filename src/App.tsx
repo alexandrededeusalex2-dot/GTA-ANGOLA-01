@@ -6,6 +6,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { ModuleDescriptor } from './core/types';
 import { AngolaVirtualEngine, type HudTelemetryState } from './engine/AngolaVirtualEngine';
+import { createInitialPlayerNeeds } from './modules/gameplay/PlayerNeeds';
 import { ArchitectureDrawer } from './modules/ui/ArchitectureDrawer';
 import { HudOverlay } from './modules/ui/HudOverlay';
 import { PauseModal } from './modules/ui/PauseModal';
@@ -23,7 +24,7 @@ const INITIAL_TELEMETRY: HudTelemetryState = {
   nearestStreetLabel: 'Prenda · Núcleo UV n.º 1',
   worldTargetLabel: 'Luanda · Prenda UV n.º 1 (08°50\'10" S, 13°13\'26" E)',
   geographicalStatus:
-    'Ambiente urbano 3D ativo (OSM + UTM 33S; tipologias individuais HPIP por confirmar)',
+    'Cidade Viva ativa (OSM + UTM 33S · NPCs, trânsito, semáforo e estabelecimentos)',
   selectedFeature: null,
   metrics: {
     fps: 60,
@@ -50,6 +51,20 @@ const INITIAL_TELEMETRY: HudTelemetryState = {
   missionDistanceMeters: 344,
   missionBanner: null,
   kwanzaBalance: 0,
+  gameClockLabel: '07:00',
+  timeSpeedMultiplier: 1,
+  isNight: false,
+  streetlightsOn: false,
+  isRaining: false,
+  trafficLightPhase: 'green',
+  trafficFineBanner: null,
+  zungueiraCallout: null,
+  needs: createInitialPlayerNeeds(),
+  nearbyEstablishment: null,
+  openEstablishmentKind: null,
+  shopFeedback: null,
+  characterHairId: 'hair_default_short',
+  characterTshirtHex: '#e6e1d8',
 };
 
 export default function App() {
@@ -121,6 +136,8 @@ export default function App() {
           onToggleCameraMode={() => engineRef.current?.toggleCameraMode()}
           onSelectQuality={(tier) => engineRef.current?.setQualityTier(tier)}
           onSelectTimeOfDay={(preset) => engineRef.current?.setTimeOfDay(preset)}
+          onCycleTimeSpeed={() => engineRef.current?.cycleTimeSpeed()}
+          onToggleRain={() => engineRef.current?.toggleRain()}
           onSelectLayerFilter={(filter) => engineRef.current?.setLayerFilter(filter)}
           onJumpPreset={(preset) => engineRef.current?.jumpToPreset(preset)}
           onClearSelection={() => engineRef.current?.clearSelection()}
@@ -130,6 +147,12 @@ export default function App() {
           onResetCamera={() => engineRef.current?.resetCamera()}
           onVehicleInteract={() => engineRef.current?.interactNearbyVehicle()}
           onCancelMission={() => engineRef.current?.cancelMission()}
+          onOpenNearbyShop={() => engineRef.current?.openNearbyEstablishmentMenu()}
+          onCloseShop={() => engineRef.current?.closeEstablishmentMenu()}
+          onBuyCantinaItem={(id) => engineRef.current?.buyCantinaItem(id)}
+          onBuyBoutiqueTshirt={(hex, label) => engineRef.current?.buyBoutiqueTshirt(hex, label)}
+          onBuyBarbeariaLowFade={() => void engineRef.current?.buyBarbeariaLowFade()}
+          onSleepAtHome={() => engineRef.current?.sleepAtHome()}
         />
       )}
 

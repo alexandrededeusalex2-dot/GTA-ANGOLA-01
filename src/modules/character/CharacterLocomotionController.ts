@@ -125,6 +125,7 @@ export function stepCharacterLocomotion(
   dt: number,
   resolveCollision: (x: number, z: number, radius: number) => { x: number; z: number },
   sampleGroundY: (x: number, z: number) => number,
+  speedMultiplier = 1,
 ): LocomotionStepResult {
   const safeDt = Math.min(Math.max(dt, 0.0005), 0.05);
   const { dirX, dirZ, magnitude } = computeCameraRelativeDirection(
@@ -133,7 +134,8 @@ export function stepCharacterLocomotion(
     cameraYaw,
   );
 
-  const maxSpeed = input.sprint ? RUN_SPEED_MPS : WALK_SPEED_MPS;
+  const clampedMult = Math.max(0.25, Math.min(1.5, speedMultiplier));
+  const maxSpeed = (input.sprint ? RUN_SPEED_MPS : WALK_SPEED_MPS) * clampedMult;
   const targetVx = dirX * maxSpeed * magnitude;
   const targetVz = dirZ * maxSpeed * magnitude;
 

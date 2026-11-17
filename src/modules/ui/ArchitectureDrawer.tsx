@@ -50,7 +50,7 @@ function statusLabel(
     return { text: 'Condução Arcade (Fase 6)', colorClass: 'text-emerald-300' };
   }
   if (id === 'npc' && status === 'implemented') {
-    return { text: '3 NPCs Leves (Fase 7)', colorClass: 'text-emerald-300' };
+    return { text: 'Cidade Viva (Fase 8)', colorClass: 'text-emerald-300' };
   }
   if (id === 'economy' && status === 'implemented') {
     return { text: 'Missão +100 Kz (Fase 7)', colorClass: 'text-emerald-300' };
@@ -214,7 +214,7 @@ export function ArchitectureDrawer({
 
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-xs font-medium text-slate-300">Sol:</span>
-              {(['morning', 'noon', 'sunset'] as TimeOfDayPreset[]).map((preset) => (
+              {(['morning', 'noon', 'sunset', 'night'] as TimeOfDayPreset[]).map((preset) => (
                 <button
                   key={preset}
                   type="button"
@@ -225,7 +225,13 @@ export function ArchitectureDrawer({
                       : 'bg-slate-800 text-slate-300 hover:text-white'
                   }`}
                 >
-                  {preset === 'morning' ? 'Manhã' : preset === 'noon' ? 'Meio-Dia' : 'Pôr do Sol'}
+                  {preset === 'morning'
+                    ? 'Manhã'
+                    : preset === 'noon'
+                      ? 'Meio-Dia'
+                      : preset === 'sunset'
+                        ? 'Pôr do Sol'
+                        : 'Noite'}
                 </button>
               ))}
             </div>

@@ -9,6 +9,7 @@ import type { CharacterActionSlot } from './CharacterCustomization';
 
 export const PROTAGONIST_GLB_URL = '/assets/models/characters/prenda_protagonist.glb';
 export const PROTAGONIST_CLIPS_URL = '/assets/animations/prenda_locomotion.json';
+export const ACESSORIOS_PRENDA_GLB_URL = '/assets/models/props/acessorios_prenda.glb';
 
 interface BakedAnimationBundle {
   readonly schemaVersion: number;
@@ -25,6 +26,7 @@ export interface LoadedProtagonistRig {
   readonly futureActionSlots: ReadonlySet<CharacterActionSlot>;
   readonly boneNames: readonly string[];
   readonly contactShadowMesh: THREE.Mesh;
+  readonly headBone: THREE.Bone | null;
   applyBlendWeights(
     idleWeight: number,
     walkWeight: number,
@@ -32,6 +34,8 @@ export interface LoadedProtagonistRig {
     walkTimeScale: number,
     runTimeScale: number,
   ): void;
+  setTshirtColor(hex: string): boolean;
+  setHairStyle(style: 'default' | 'low_fade', hairTemplate?: THREE.Object3D | null): boolean;
   update(dt: number): void;
   dispose(): void;
 }
@@ -55,11 +59,56 @@ function createContactShadowTexture(): THREE.CanvasTexture {
   return tex;
 }
 
-/**
- * Loads the realistic adult male protagonist GLB + baked grounded locomotion clips
- * (idle, walk, run), calibrates PBR shading for Luanda sunlight, adds a ground
- * contact shadow disc, and prepares future action slot hooks.
- */
+function createRecoloredBodyTexture(
+  sourceTexture: THREE.Texture,
+  hexColor: string,
+): THREE.CanvasTexture | null {
+  if (typeof document === 'undefined') return null;
+  const img = sourceTexture.image as CanvasImageSource & { width?: number; height?: number };
+  if (!img || !img.width || !img.height) return null;
+
+  const width = img.width;
+  const height = img.height;
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return null;
+
+  ctx.drawImage(img, 0, 0, width, height);
+  const imgData = ctx.getImageData(0, 0, width, height);
+  const data = imgData.data;
+
+  const target = new THREE.Color(hexColor);
+  const tr = target.r;
+  const tg = target.g;
+  const tb = target.b;
+
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    const maxC = Math.max(r, g, b);
+    const minC = Math.min(r, g, b);
+    const sat = maxC - minC;
+    const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+
+    if (sat < 30 && lum >= 85 && lum <= 228) {
+      const shade = lum / 170;
+      data[i] = Math.min(255, Math.round(tr * 255 * shade));
+      data[i + 1] = Math.min(255, Math.round(tg * 255 * shade));
+      data[i + 2] = Math.min(255, Math.round(tb * 255 * shade));
+    }
+  }
+
+  ctx.putImageData(imgData, 0, 0);
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.flipY = false;
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.needsUpdate = true;
+  return tex;
+}
+
 export async function loadProtagonistRig(
   assetManager: AssetManager,
 ): Promise<LoadedProtagonistRig> {
@@ -76,10 +125,17 @@ export async function loadProtagonistRig(
 
   const modelScene = gltf.scene;
   const boneNamesSet = new Set<string>();
+  let headBone: THREE.Bone | null = null;
+  let bodyMesh: THREE.Mesh | null = null;
+  let bodyMaterial: THREE.MeshStandardMaterial | null = null;
+  let baseBodyMap: THREE.Texture | null = null;
 
   modelScene.traverse((obj) => {
     if ((obj as THREE.Bone).isBone && obj.name) {
       boneNamesSet.add(obj.name);
+      if (obj.name === 'Head') {
+        headBone = obj as THREE.Bone;
+      }
     }
     if ((obj as THREE.Mesh).isMesh) {
       const mesh = obj as THREE.Mesh;
@@ -98,12 +154,21 @@ export async function loadProtagonistRig(
           std.needsUpdate = true;
         }
       }
+      if (mesh.name === 'H_DDS_HighRes') {
+        bodyMesh = mesh;
+        const srcMat = Array.isArray(mesh.material) ? mesh.material[0] : mesh.material;
+        if (srcMat && (srcMat as THREE.MeshStandardMaterial).isMeshStandardMaterial) {
+          const cloned = (srcMat as THREE.MeshStandardMaterial).clone();
+          mesh.material = cloned;
+          bodyMaterial = cloned;
+          baseBodyMap = cloned.map;
+        }
+      }
     }
   });
 
   rootGroup.add(modelScene);
 
-  // Ground contact shadow disc so character never appears floating when shadows are low/disabled
   const shadowGeo = new THREE.CircleGeometry(0.42, 24);
   shadowGeo.rotateX(-Math.PI / 2);
   const shadowTex = createContactShadowTexture();
@@ -148,7 +213,6 @@ export async function loadProtagonistRig(
   walkAction.setEffectiveWeight(0);
   runAction.setEffectiveWeight(0);
 
-  // Immediately evaluate frame 0 so protagonist never flashes a T-pose on first paint
   mixer.update(0);
   modelScene.updateMatrixWorld(true);
 
@@ -163,6 +227,9 @@ export async function loadProtagonistRig(
     'interact',
   ]);
 
+  let customTshirtTex: THREE.CanvasTexture | null = null;
+  let hairAccessoryNode: THREE.Object3D | null = null;
+
   return {
     rootGroup,
     modelScene,
@@ -175,6 +242,7 @@ export async function loadProtagonistRig(
     futureActionSlots,
     boneNames: [...boneNamesSet],
     contactShadowMesh,
+    headBone,
     applyBlendWeights(idleWeight, walkWeight, runWeight, walkTimeScale, runTimeScale) {
       idleAction.setEffectiveWeight(idleWeight);
       walkAction.setEffectiveWeight(walkWeight);
@@ -182,12 +250,56 @@ export async function loadProtagonistRig(
       walkAction.setEffectiveTimeScale(walkTimeScale);
       runAction.setEffectiveTimeScale(runTimeScale);
     },
+    setTshirtColor(hex: string) {
+      if (!bodyMaterial || !bodyMesh) return false;
+      customTshirtTex?.dispose();
+      customTshirtTex = null;
+
+      if (baseBodyMap) {
+        const recolored = createRecoloredBodyTexture(baseBodyMap, hex);
+        if (recolored) {
+          customTshirtTex = recolored;
+          bodyMaterial.map = recolored;
+          bodyMaterial.color.setHex(0xffffff);
+          bodyMaterial.needsUpdate = true;
+          return true;
+        }
+      }
+      bodyMaterial.color.set(hex);
+      bodyMaterial.needsUpdate = true;
+      return true;
+    },
+    setHairStyle(style: 'default' | 'low_fade', hairTemplate?: THREE.Object3D | null) {
+      if (hairAccessoryNode) {
+        hairAccessoryNode.removeFromParent();
+        hairAccessoryNode = null;
+      }
+      if (style === 'default') return true;
+      if (!headBone || !hairTemplate) return false;
+
+      const clone = hairTemplate.clone(true);
+      clone.name = 'ProtagonistHairLowFade';
+      clone.scale.setScalar(100);
+      clone.position.set(0, 9.2, 0.4);
+      clone.traverse((child) => {
+        if ((child as THREE.Mesh).isMesh) {
+          (child as THREE.Mesh).castShadow = false;
+          (child as THREE.Mesh).receiveShadow = false;
+        }
+      });
+      headBone.add(clone);
+      hairAccessoryNode = clone;
+      return true;
+    },
     update(dt: number) {
       mixer.update(dt);
     },
     dispose() {
       mixer.stopAllAction();
       mixer.uncacheRoot(modelScene);
+      customTshirtTex?.dispose();
+      bodyMaterial?.dispose();
+      hairAccessoryNode?.removeFromParent();
       shadowGeo.dispose();
       shadowTex.dispose();
       shadowMat.dispose();

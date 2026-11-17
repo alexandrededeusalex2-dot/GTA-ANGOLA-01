@@ -29,6 +29,16 @@ import {
 import { EconomyEngine } from '../modules/economy/EconomyEngine';
 import { GameplayEngine } from '../modules/gameplay/GameplayEngine';
 import {
+  applyCantinaItemToNeeds,
+  CANTINA_MENU_ITEMS,
+  createInitialPlayerNeeds,
+  NEED_SLEEP_MESSAGE,
+  sleepAtHomeNeeds,
+  stepPlayerNeeds,
+  type CantinaMenuItemId,
+  type PlayerNeedsState,
+} from '../modules/gameplay/PlayerNeeds';
+import {
   MissionManager,
   PRENDA_CENTRO_DROPOFF_NPC_POSE,
   PRENDA_CENTRO_TARGET,
@@ -41,7 +51,15 @@ import { SaveSystem } from '../modules/save/SaveSystem';
 import { SocialEngine } from '../modules/social/SocialEngine';
 import type { MiniMapPose } from '../modules/ui/MiniMap';
 import { UiModule } from '../modules/ui/UiModule';
+import { TrafficManager } from '../modules/vehicle/TrafficManager';
 import { VehicleEngine } from '../modules/vehicle/VehicleEngine';
+import {
+  BARBEARIA_LOWFADE_PRICE_KZ,
+  BOUTIQUE_TSHIRT_PRICE_KZ,
+  EstablishmentsManager,
+  type EstablishmentKind,
+  type EstablishmentSpec,
+} from '../modules/world/EstablishmentsManager';
 import type { PrendaRoadSegment } from '../modules/world/PrendaCartography';
 import { WorldEngine } from '../modules/world/WorldEngine';
 import { PRENDA_UV1_PUBLISHED_DMS } from '../modules/world/luandaCoordinates';
@@ -81,15 +99,27 @@ export interface HudTelemetryState {
   readonly missionDistanceMeters: number;
   readonly missionBanner: string | null;
   readonly kwanzaBalance: number;
+  readonly gameClockLabel: string;
+  readonly timeSpeedMultiplier: 1 | 20 | 120;
+  readonly isNight: boolean;
+  readonly streetlightsOn: boolean;
+  readonly isRaining: boolean;
+  readonly trafficLightPhase: 'green' | 'red';
+  readonly trafficFineBanner: string | null;
+  readonly zungueiraCallout: string | null;
+  readonly needs: PlayerNeedsState;
+  readonly nearbyEstablishment: EstablishmentSpec | null;
+  readonly openEstablishmentKind: EstablishmentKind | null;
+  readonly shopFeedback: string | null;
+  readonly characterHairId: string;
+  readonly characterTshirtHex: string;
 }
 
 const _pickRaycaster = new THREE.Raycaster();
 const _ndcVec = new THREE.Vector2();
 
 /**
- * Root composition facade for ANGOLA VIRTUAL (Phase 2 — Prenda UV n.º 1, Luanda).
- * Connects all 12 modular engines, Three.js viewport, dual camera exploration,
- * OSM/HPIP Prenda cartography, input, and IndexedDB persistence.
+ * Root composition facade for ANGOLA VIRTUAL (Phase 8 — Cidade Viva em Prenda UV n.º 1, Luanda).
  */
 export class AngolaVirtualEngine {
   readonly eventBus = new EventBus<EngineEvents>();
@@ -103,6 +133,8 @@ export class AngolaVirtualEngine {
   readonly characterEngine: CharacterEngine;
   readonly vehicleEngine: VehicleEngine;
   readonly npcEngine: NpcEngine;
+  readonly trafficManager: TrafficManager;
+  readonly establishmentsManager: EstablishmentsManager;
   readonly economyEngine = new EconomyEngine();
   readonly careerEngine = new CareerEngine();
   readonly socialEngine = new SocialEngine();
@@ -125,6 +157,13 @@ export class AngolaVirtualEngine {
   private lastVehiclePrompt: string | null = null;
   private lastVehicleFeedback: string | null = null;
   private lastDrivingState = false;
+  private lastShopId: EstablishmentKind | null = null;
+  private lastFineMsg: string | null = null;
+  private lastZungueiraShout: string | null = null;
+  private needsState: PlayerNeedsState = createInitialPlayerNeeds();
+  private openEstablishmentKind: EstablishmentKind | null = null;
+  private shopFeedback: string | null = null;
+  private shopFeedbackTimer = 0;
   private lastRenderStats = { drawCalls: 0, triangles: 0, geometries: 0, textures: 0 };
   private hudSubscriber: ((state: HudTelemetryState) => void) | null = null;
   private toggleInspectorCallback: (() => void) | null = null;
@@ -134,6 +173,8 @@ export class AngolaVirtualEngine {
     this.characterEngine = new CharacterEngine(this.assetManager, this.eventBus);
     this.vehicleEngine = new VehicleEngine(this.assetManager, this.eventBus);
     this.npcEngine = new NpcEngine(this.assetManager);
+    this.trafficManager = new TrafficManager(this.assetManager);
+    this.establishmentsManager = new EstablishmentsManager(this.assetManager);
     this.gameplayEngine = new GameplayEngine(this.eventBus);
     this.audioEngine = new AudioEngine(this.eventBus);
     this.saveSystem = new SaveSystem(this.eventBus);
@@ -163,25 +204,28 @@ export class AngolaVirtualEngine {
 
     await this.physicsAdapter.init();
     await this.registry.initAll();
+    // Initial pocket money in Luanda so Cantina/Boutique/Barbearia are testable right away
+    if (this.economyEngine.getBalanceAoa() === 0) {
+      this.economyEngine.awardKwanza(450, 'Saldo inicial na Prenda UV1');
+    }
+
+    const sampleGround = (x: number, z: number) => this.worldEngine.sampleGroundHeight(x, z);
     await Promise.all([
       this.characterEngine.waitUntilReady(),
-      this.vehicleEngine.mountToScene(
-        this.worldEngine.scene,
-        (x, z) => this.worldEngine.sampleGroundHeight(x, z),
-      ),
+      this.vehicleEngine.mountToScene(this.worldEngine.scene, sampleGround),
       this.npcEngine.mountToScene(
         this.worldEngine.scene,
         this.vehicleEngine.getMercadoStopSpec().localPosition,
-        (x, z) => this.worldEngine.sampleGroundHeight(x, z),
+        sampleGround,
       ),
+      this.trafficManager.mountToScene(this.worldEngine.scene, sampleGround),
+      this.establishmentsManager.mountToScene(this.worldEngine.scene, sampleGround),
     ]);
-    this.missionManager.mountToScene(
-      this.worldEngine.scene,
-      (x, z) => this.worldEngine.sampleGroundHeight(x, z),
-    );
+
+    this.missionManager.mountToScene(this.worldEngine.scene, sampleGround);
     this.characterEngine.resetToSpawn(
       (x, z, r) => this.resolveWorldCollision(x, z, r),
-      (x, z) => this.worldEngine.sampleGroundHeight(x, z),
+      sampleGround,
     );
     const initialCharPos = this.characterEngine.getPosition();
     this.miniMapPoseRef.current.x = initialCharPos.x;
@@ -286,6 +330,7 @@ export class AngolaVirtualEngine {
     this.audioEngine.playUiTick();
     this.inputManager.clearHeld();
     this.selectedFeature = null;
+    this.openEstablishmentKind = null;
     this.viewport?.snapToTitleOverview();
     this.gameplayEngine.setState('title');
     this.pushHudState(true);
@@ -309,6 +354,18 @@ export class AngolaVirtualEngine {
     this.audioEngine.playUiTick();
     void this.saveSystem.saveProfile({ timeOfDay: preset });
     this.eventBus.emit('world:timeChanged', { preset });
+    this.pushHudState(true);
+  }
+
+  cycleTimeSpeed(): void {
+    this.worldEngine.cycleTimeSpeedMultiplier();
+    this.audioEngine.playUiTick();
+    this.pushHudState(true);
+  }
+
+  toggleRain(): void {
+    this.worldEngine.toggleRainForPreview();
+    this.audioEngine.playUiTick();
     this.pushHudState(true);
   }
 
@@ -339,12 +396,14 @@ export class AngolaVirtualEngine {
   }
 
   interactNearbyVehicle(): void {
+    const charPos = this.characterEngine.getPosition();
     const res = this.vehicleEngine.tryInteract(
-      this.characterEngine.getPosition(),
+      charPos,
       (x, z, r) => this.worldEngine.resolveExplorerCollision(x, z, r),
       (x, z) => this.worldEngine.sampleGroundHeight(x, z),
     );
     if (res.action === 'entered') {
+      this.openEstablishmentKind = null;
       this.characterEngine.setVisible(false);
       this.cameraMode = 'third-person';
       const vPose = this.vehicleEngine.getVehiclePose();
@@ -355,7 +414,9 @@ export class AngolaVirtualEngine {
       }
       this.audioEngine.playUiTick();
       this.pushHudState(true);
-    } else if (res.action === 'exited' && res.exitPosition) {
+      return;
+    }
+    if (res.action === 'exited' && res.exitPosition) {
       this.characterEngine.teleportTo(
         res.exitPosition.x,
         res.exitPosition.z,
@@ -372,7 +433,82 @@ export class AngolaVirtualEngine {
       );
       this.audioEngine.playUiTick();
       this.pushHudState(true);
+      return;
     }
+
+    // If not interacting with vehicle, check nearby Prenda establishment
+    const nearbyShop = this.establishmentsManager.getNearbyEstablishment();
+    if (nearbyShop) {
+      this.openEstablishmentKind =
+        this.openEstablishmentKind === nearbyShop.id ? null : nearbyShop.id;
+      this.audioEngine.playUiTick();
+      this.pushHudState(true);
+    }
+  }
+
+  openNearbyEstablishmentMenu(): void {
+    const nearbyShop = this.establishmentsManager.getNearbyEstablishment();
+    if (!nearbyShop) return;
+    this.openEstablishmentKind =
+      this.openEstablishmentKind === nearbyShop.id ? null : nearbyShop.id;
+    this.audioEngine.playUiTick();
+    this.pushHudState(true);
+  }
+
+  closeEstablishmentMenu(): void {
+    this.openEstablishmentKind = null;
+    this.pushHudState(true);
+  }
+
+  buyCantinaItem(itemId: CantinaMenuItemId): void {
+    const item = CANTINA_MENU_ITEMS.find((m) => m.id === itemId);
+    if (!item) return;
+    if (!this.economyEngine.spendKwanza(item.priceKz, `Cantina: ${item.label}`)) {
+      this.setShopFeedback('Saldo insuficiente em Kwanzas');
+      return;
+    }
+    this.needsState = applyCantinaItemToNeeds(this.needsState, itemId);
+    this.audioEngine.playSessionStartChime();
+    this.setShopFeedback(`${item.label} consumido (-${item.priceKz} Kz)`);
+    this.pushHudState(true);
+  }
+
+  buyBoutiqueTshirt(hex: string, label: string): void {
+    if (!this.economyEngine.spendKwanza(BOUTIQUE_TSHIRT_PRICE_KZ, `Boutique: T-shirt ${label}`)) {
+      this.setShopFeedback('Saldo insuficiente (200 Kz)');
+      return;
+    }
+    this.characterEngine.applyTshirtColor(hex);
+    this.audioEngine.playSessionStartChime();
+    this.setShopFeedback(`T-shirt ${label} aplicada (-200 Kz)`);
+    this.pushHudState(true);
+  }
+
+  async buyBarbeariaLowFade(): Promise<void> {
+    if (!this.economyEngine.spendKwanza(BARBEARIA_LOWFADE_PRICE_KZ, 'Barbearia: Corte Low Fade')) {
+      this.setShopFeedback('Saldo insuficiente (150 Kz)');
+      return;
+    }
+    await this.characterEngine.applyHairStyle('low_fade');
+    this.audioEngine.playSessionStartChime();
+    this.setShopFeedback('Corte Low Fade aplicado (-150 Kz)');
+    this.pushHudState(true);
+  }
+
+  sleepAtHome(): void {
+    this.needsState = sleepAtHomeNeeds(this.needsState);
+    if (this.worldEngine.getDayNightState().isNight) {
+      this.worldEngine.applyTimeOfDay('morning');
+    }
+    this.openEstablishmentKind = null;
+    this.audioEngine.playSessionStartChime();
+    this.setShopFeedback('Descanso concluído · Energia 100%');
+    this.pushHudState(true);
+  }
+
+  private setShopFeedback(msg: string): void {
+    this.shopFeedback = msg;
+    this.shopFeedbackTimer = 3.5;
   }
 
   jumpToPreset(preset: PrendaCameraPresetId): void {
@@ -396,9 +532,9 @@ export class AngolaVirtualEngine {
       this.viewport?.jumpToPreset(preset, this.characterEngine.getCameraFollowAnchor());
     } else if (preset === 'v4-comercial') {
       this.characterEngine.teleportTo(
-        -48,
-        -14,
-        2.0,
+        -22,
+        -12,
+        2.1,
         (x, z, r) => this.resolveWorldCollision(x, z, r),
         (x, z) => this.worldEngine.sampleGroundHeight(x, z),
       );
@@ -503,6 +639,13 @@ export class AngolaVirtualEngine {
     const state = this.gameplayEngine.getState();
     const input = this.inputManager.consumeFrameState();
 
+    if (this.shopFeedbackTimer > 0) {
+      this.shopFeedbackTimer = Math.max(0, this.shopFeedbackTimer - ctx.dt);
+      if (this.shopFeedbackTimer === 0) {
+        this.shopFeedback = null;
+      }
+    }
+
     if (input.resetViewPressed) {
       if (this.vehicleEngine.isDriving()) {
         const vPose = this.vehicleEngine.getVehiclePose();
@@ -541,6 +684,7 @@ export class AngolaVirtualEngine {
         ctx.dt,
         (x, z, radius) => this.resolveWorldCollision(x, z, radius),
         (x, z) => this.worldEngine.sampleGroundHeight(x, z),
+        this.needsState.speedMultiplier,
       );
       if (input.interactPressed) {
         this.characterEngine.requestActionSlot('interact');
@@ -561,19 +705,51 @@ export class AngolaVirtualEngine {
       }
     }
 
+    const dayNightBefore = this.worldEngine.getDayNightState();
+    const trafficLight = this.trafficManager.getTrafficLightState();
+    this.npcEngine.setEnvironmentSignals(
+      trafficLight.pedestrianLight,
+      dayNightBefore.npcSpeedMultiplier,
+    );
+
     if (state === 'playing' || state === 'title') {
       this.registry.updateAll(ctx.dt);
     }
 
     const activeVehiclePose = this.vehicleEngine.getVehiclePose();
     const isDrivingNow = this.vehicleEngine.isDriving();
+    const charPos = this.characterEngine.getPosition();
+
+    // Living traffic & functional Centro traffic light (-50 Kz red-light fine)
+    const sampleGround = (x: number, z: number) => this.worldEngine.sampleGroundHeight(x, z);
+    const trafficRes = this.trafficManager.step(
+      ctx.dt,
+      isDrivingNow ? activeVehiclePose : charPos,
+      isDrivingNow,
+      activeVehiclePose.speedMps,
+      sampleGround,
+    );
+    if (trafficRes.finedAmountKz > 0) {
+      this.economyEngine.deductKwanza(
+        trafficRes.finedAmountKz,
+        'Multa passar sinal vermelho Centro UV1',
+      );
+      this.audioEngine.playUiTick();
+    }
+
+    // Establishments door proximity & auto-close menu if walked away
+    const nearbyShop = isDrivingNow
+      ? null
+      : this.establishmentsManager.update(charPos, ctx.dt);
+    if (!nearbyShop && this.openEstablishmentKind) {
+      this.openEstablishmentKind = null;
+    }
 
     if (isDrivingNow) {
       this.miniMapPoseRef.current.x = activeVehiclePose.x;
       this.miniMapPoseRef.current.z = activeVehiclePose.z;
       this.miniMapPoseRef.current.yaw = activeVehiclePose.yaw;
     } else {
-      const charPos = this.characterEngine.getPosition();
       this.miniMapPoseRef.current.x = charPos.x;
       this.miniMapPoseRef.current.z = charPos.z;
       this.miniMapPoseRef.current.yaw = this.characterEngine.getYaw();
@@ -583,21 +759,25 @@ export class AngolaVirtualEngine {
       state === 'playing' && isDrivingNow
         ? activeVehiclePose
         : state === 'playing' && this.cameraMode === 'third-person'
-          ? this.characterEngine.getPosition()
+          ? charPos
           : ctx.targetPosition;
     this.worldEngine.updateFocusPosition(focusPos);
     this.npcEngine.updateFocusPosition(focusPos);
 
     let missionUiChanged = false;
     if (state === 'playing') {
-      const carrierPos = this.missionManager.isActive()
-        ? activeVehiclePose
-        : this.characterEngine.getPosition();
-      const missionStep = this.missionManager.step(
-        ctx.dt,
-        carrierPos,
-        isDrivingNow,
+      const dayNightNow = this.worldEngine.getDayNightState();
+      const gameHoursElapsed = (ctx.dt / 60) * dayNightNow.speedMultiplier;
+      const isMoving = isDrivingNow || this.characterEngine.getSpeed() > 0.2;
+      this.needsState = stepPlayerNeeds(
+        this.needsState,
+        gameHoursElapsed,
+        dayNightNow.isNight,
+        isMoving,
       );
+
+      const carrierPos = this.missionManager.isActive() ? activeVehiclePose : charPos;
+      const missionStep = this.missionManager.step(ctx.dt, carrierPos, isDrivingNow);
       missionUiChanged = missionStep.uiChanged;
 
       if (missionStep.passengerShouldBoard) {
@@ -612,7 +792,7 @@ export class AngolaVirtualEngine {
           PRENDA_CENTRO_DROPOFF_NPC_POSE.x,
           PRENDA_CENTRO_DROPOFF_NPC_POSE.z,
           PRENDA_CENTRO_DROPOFF_NPC_POSE.yaw,
-          (x, z) => this.worldEngine.sampleGroundHeight(x, z),
+          sampleGround,
         );
         this.audioEngine.playSessionStartChime();
       }
@@ -620,16 +800,18 @@ export class AngolaVirtualEngine {
 
     this.performanceMonitor.recordFrame(ctx.dt);
 
-    const interactionState = this.vehicleEngine.getInteractionState(
-      this.characterEngine.getPosition(),
-    );
-    const vehicleStateChanged =
+    const interactionState = this.vehicleEngine.getInteractionState(charPos);
+    const zungueiraShout = this.npcEngine.getActiveZungueiraCallout();
+    const stateChanged =
       isDrivingNow !== this.lastDrivingState ||
       interactionState.promptText !== this.lastVehiclePrompt ||
-      interactionState.feedbackText !== this.lastVehicleFeedback;
+      interactionState.feedbackText !== this.lastVehicleFeedback ||
+      (nearbyShop?.id ?? null) !== this.lastShopId ||
+      trafficRes.fineMessage !== this.lastFineMsg ||
+      zungueiraShout !== this.lastZungueiraShout;
 
     const now = performance.now();
-    if (vehicleStateChanged || missionUiChanged || now - this.lastHudPushTime >= 260) {
+    if (stateChanged || missionUiChanged || now - this.lastHudPushTime >= 260) {
       this.lastHudPushTime = now;
       this.pushHudState(false, ctx);
     }
@@ -666,13 +848,35 @@ export class AngolaVirtualEngine {
     const saved = this.saveSystem.getCachedProfile();
     const isDriving = this.vehicleEngine.isDriving();
     const vehiclePose = this.vehicleEngine.getVehiclePose();
-    const vehicleInteraction = this.vehicleEngine.getInteractionState(
-      this.characterEngine.getPosition(),
-    );
+    const charPos = this.characterEngine.getPosition();
+    const vehicleInteraction = this.vehicleEngine.getInteractionState(charPos);
     const missionState = this.missionManager.getState();
+    const dayNight = this.worldEngine.getDayNightState();
+    const trafficLight = this.trafficManager.getTrafficLightState();
+    const fineBanner = this.trafficManager.getFineBannerMessage();
+    const zungueiraCallout = this.npcEngine.getActiveZungueiraCallout();
+    const nearbyEstablishment = isDriving
+      ? null
+      : this.establishmentsManager.getNearbyEstablishment();
+    const appearance = this.characterEngine.getAppearanceProfile();
+
     this.lastDrivingState = isDriving;
     this.lastVehiclePrompt = vehicleInteraction.promptText;
     this.lastVehicleFeedback = vehicleInteraction.feedbackText;
+    this.lastShopId = nearbyEstablishment?.id ?? null;
+    this.lastFineMsg = fineBanner;
+    this.lastZungueiraShout = zungueiraCallout;
+
+    if (typeof document !== 'undefined' && document.body) {
+      document.body.dataset.needsHunger = String(Math.round(this.needsState.hunger));
+      document.body.dataset.needsEnergy = String(Math.round(this.needsState.energy));
+      document.body.dataset.mustSleep = this.needsState.mustSleepHome ? 'true' : 'false';
+      if (this.needsState.mustSleepHome) {
+        document.body.dataset.sleepMessage = NEED_SLEEP_MESSAGE;
+      } else {
+        delete document.body.dataset.sleepMessage;
+      }
+    }
 
     this.hudSubscriber({
       gameState: this.gameplayEngine.getState(),
@@ -686,7 +890,7 @@ export class AngolaVirtualEngine {
       nearestStreetLabel: this.worldEngine.getNearestStreetLabel(),
       worldTargetLabel: `Luanda · Prenda UV n.º 1 (${PRENDA_UV1_PUBLISHED_DMS})`,
       geographicalStatus:
-        'Ambiente urbano 3D ativo (OSM + UTM 33S; tipologias individuais HPIP por confirmar)',
+        'Cidade Viva ativa (OSM + UTM 33S · NPCs, trânsito, semáforo e estabelecimentos)',
       selectedFeature: this.selectedFeature,
       metrics: snapshot,
       saveBackend: this.saveSystem.getBackendMode(),
@@ -703,12 +907,28 @@ export class AngolaVirtualEngine {
       missionDistanceMeters: missionState.distanceMeters,
       missionBanner: missionState.bannerMessage,
       kwanzaBalance: this.economyEngine.getBalanceAoa(),
+      gameClockLabel: dayNight.clockLabel,
+      timeSpeedMultiplier: dayNight.speedMultiplier,
+      isNight: dayNight.isNight,
+      streetlightsOn: dayNight.streetlightsOn,
+      isRaining: dayNight.isRaining,
+      trafficLightPhase: trafficLight.phase,
+      trafficFineBanner: fineBanner,
+      zungueiraCallout,
+      needs: this.needsState,
+      nearbyEstablishment,
+      openEstablishmentKind: this.openEstablishmentKind,
+      shopFeedback: this.shopFeedback,
+      characterHairId: appearance.hairStyle,
+      characterTshirtHex: appearance.clothingTop,
     });
   }
 
   dispose(): void {
     this.inputManager.detach();
     this.missionManager.dispose();
+    this.trafficManager.dispose();
+    this.establishmentsManager.dispose();
     this.viewport?.dispose();
     this.viewport = null;
     this.registry.disposeAll();

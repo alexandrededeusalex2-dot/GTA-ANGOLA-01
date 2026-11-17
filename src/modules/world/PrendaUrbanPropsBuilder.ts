@@ -19,11 +19,19 @@ export interface UrbanObstacleCircle {
   readonly radius: number;
 }
 
+export interface StreetlightAnchor {
+  readonly x: number;
+  readonly y: number;
+  readonly z: number;
+}
+
 export interface PrendaUrbanPropsResult {
   readonly group: THREE.Group;
   readonly contemporaryPropsGroup: THREE.Group;
   readonly fineDetailGroup: THREE.Group;
   readonly obstacleCircles: readonly UrbanObstacleCircle[];
+  readonly lampMaterial: THREE.MeshStandardMaterial | null;
+  readonly streetlightPositions: readonly StreetlightAnchor[];
   readonly propsSummary: {
     readonly kiosksCount: number;
     readonly streetlightsCount: number;
@@ -382,6 +390,8 @@ export function buildPrendaUrbanProps(
   }
 
   const cappedLights = lightSpecs.slice(0, 140);
+  let lampMat: THREE.MeshStandardMaterial | null = null;
+  const streetlightPositions: StreetlightAnchor[] = [];
   if (cappedLights.length > 0) {
     const poleGeom = new THREE.CylinderGeometry(0.09, 0.13, 6.4, 6);
     const armGeom = new THREE.BoxGeometry(0.1, 0.1, 1.45);
@@ -389,10 +399,10 @@ export function buildPrendaUrbanProps(
 
     const poleInst = new THREE.InstancedMesh(poleGeom, materials.darkMetal, cappedLights.length);
     const armInst = new THREE.InstancedMesh(armGeom, materials.darkMetal, cappedLights.length);
-    const lampMat = new THREE.MeshStandardMaterial({
+    lampMat = new THREE.MeshStandardMaterial({
       color: 0xfff0c8,
       emissive: 0xffd27d,
-      emissiveIntensity: 0.45,
+      emissiveIntensity: 0.25,
       roughness: 0.35,
     });
     const lampInst = new THREE.InstancedMesh(lampGeom, lampMat, cappedLights.length);
@@ -411,9 +421,13 @@ export function buildPrendaUrbanProps(
       dummy.updateMatrix();
       armInst.setMatrixAt(i, dummy.matrix);
 
-      dummy.position.set(l.x + sinY * 1.25, y + 6.26, l.z + cosY * 1.25);
+      const lx = l.x + sinY * 1.25;
+      const ly = y + 6.26;
+      const lz = l.z + cosY * 1.25;
+      dummy.position.set(lx, ly, lz);
       dummy.updateMatrix();
       lampInst.setMatrixAt(i, dummy.matrix);
+      streetlightPositions.push({ x: lx, y: ly - 0.3, z: lz });
     });
 
     poleInst.instanceMatrix.needsUpdate = true;
@@ -552,6 +566,8 @@ export function buildPrendaUrbanProps(
     contemporaryPropsGroup,
     fineDetailGroup,
     obstacleCircles,
+    lampMaterial: lampMat,
+    streetlightPositions,
     propsSummary: {
       kiosksCount: kioskCandidates.length,
       streetlightsCount: cappedLights.length,

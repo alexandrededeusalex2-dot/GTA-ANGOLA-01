@@ -29,6 +29,7 @@ import {
   type LocomotionState,
 } from './CharacterLocomotionController';
 import {
+  ACESSORIOS_PRENDA_GLB_URL,
   loadProtagonistRig,
   PROTAGONIST_GLB_URL,
   type LoadedProtagonistRig,
@@ -174,6 +175,7 @@ export class CharacterEngine implements EngineModule {
     dt: number,
     resolveCollision: (x: number, z: number, radius: number) => { x: number; z: number },
     sampleGroundY: (x: number, z: number) => number,
+    speedMultiplier = 1,
   ): void {
     const result = stepCharacterLocomotion(
       this.locomotionState,
@@ -182,6 +184,7 @@ export class CharacterEngine implements EngineModule {
       dt,
       resolveCollision,
       sampleGroundY,
+      speedMultiplier,
     );
     this.locomotionState = result.state;
 
@@ -298,7 +301,33 @@ export class CharacterEngine implements EngineModule {
 
   updateAppearanceProfile(patch: Partial<CharacterAppearanceProfile>): CharacterAppearanceProfile {
     this.appearanceProfile = cloneAppearanceProfile(this.appearanceProfile, patch);
+    this.syncDomAttributes();
     return this.appearanceProfile;
+  }
+
+  applyTshirtColor(hex: string): boolean {
+    const ok = this.rig?.setTshirtColor(hex) ?? false;
+    this.updateAppearanceProfile({ clothingTop: hex });
+    return ok;
+  }
+
+  async applyHairStyle(style: 'default' | 'low_fade'): Promise<boolean> {
+    if (style === 'default') {
+      this.rig?.setHairStyle('default');
+      this.updateAppearanceProfile({ hairStyle: 'afro_curto_natural' });
+      return true;
+    }
+    if (!this.assetManager || !this.rig) return false;
+    const gltf = await this.assetManager.loadGltfModel(
+      'props:acessorios_prenda',
+      ACESSORIOS_PRENDA_GLB_URL,
+    );
+    const hairMesh = gltf.scene.getObjectByName('Hair_LowFade') ?? null;
+    const ok = this.rig.setHairStyle('low_fade', hairMesh);
+    if (ok) {
+      this.updateAppearanceProfile({ hairStyle: 'low_fade' });
+    }
+    return ok;
   }
 
   listCustomizationSlots(): readonly CustomizationAnchorSlot[] {
@@ -348,6 +377,8 @@ export class CharacterEngine implements EngineModule {
     document.body.dataset.charState = this.locomotionState.locomotion;
     document.body.dataset.charSpeed = this.locomotionState.speed.toFixed(2);
     document.body.dataset.charPos = `${this.locomotionState.x.toFixed(2)},${this.locomotionState.y.toFixed(2)},${this.locomotionState.z.toFixed(2)}`;
+    document.body.dataset.charTshirt = this.appearanceProfile.clothingTop;
+    document.body.dataset.charHair = this.appearanceProfile.hairStyle;
   }
 
   dispose(): void {
